@@ -118,3 +118,5 @@ C:\Users\Tap\source\repos\RomeoConnection\RomeoConnection\obj\Debug\RomeoConnect
 C:\Users\Tap\source\repos\RomeoConnection\RomeoConnection\obj\Debug\RomeoConnection.csproj.CopyComplete
 C:\Users\Tap\source\repos\RomeoConnection\RomeoConnection\obj\Debug\RomeoConnection.dll
 C:\Users\Tap\source\repos\RomeoConnection\RomeoConnection\obj\Debug\RomeoConnection.pdb
+C:\Users\Tap\source\repos\RomeoConnection\RomeoConnection\obj\Debug\RomeoConnection.Migrations.InitialModel.resources
+C:\Users\Tap\source\repos\RomeoConnection\RomeoConnection\obj\Debug\RomeoConnection.csproj.GenerateResource.cache
