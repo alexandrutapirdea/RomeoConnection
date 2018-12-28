@@ -1,4 +1,5 @@
-﻿using RomeoConnection.Models;
+﻿using Microsoft.AspNet.Identity;
+using RomeoConnection.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -32,9 +33,9 @@ namespace RomeoConnection.Controllers
         [HttpPost]
         public ActionResult CreateGroup(Group createdGroup)
         {
-            //            var userId = User.Identity.GetUserId();
-            //            var createdBy = _context.Users.Single(u => u.Id == userId);
-            var fakeUser = _context.Users.Single(u => u.Id == "3");
+            var userId = User.Identity.GetUserId();
+            var fakeUser = _context.Users.Single(u => u.Id == userId);
+            //            var fakeUser = _context.Users.Single(u => u.Id == "3");
             var newGroup = new Group
             {
                 CreatedBy = fakeUser,
