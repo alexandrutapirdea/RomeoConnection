@@ -9,6 +9,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+*.lock
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -29,6 +30,7 @@ bld/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
+/.vs
 # Uncomment if you have tasks that create the project's static files in wwwroot
 #wwwroot/
 
@@ -318,6 +320,39 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+
+#
+#Visual Studio files
+#
+*.[Oo]bj
+*.user
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.[Cc]ache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.lock
+*.sdf
+*.dbmdl
+*.mdf
+*.ldf
+*.Database.dbmdl
+ipch/
+obj/
+[Bb]in
+[Dd]ebug*/
+[Rr]elease*/
 
 # OpenCover UI analysis results
 OpenCover/
