@@ -6,6 +6,7 @@ namespace RomeoConnection.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<User> UsersList { get; set; }
+        public DbSet<Group> GroupList { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

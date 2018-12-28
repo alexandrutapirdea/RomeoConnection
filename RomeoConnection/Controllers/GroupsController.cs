@@ -27,24 +27,27 @@ namespace RomeoConnection.Controllers
             return View();
         }
 
-        //        [Authorize]
-        //        [HttpPost]
-        //        public ActionResult CreateGroup(Group createdGroup)
-        //        {
-        //
-        //            //            var createdBy = _context.Users.Single(u => u.Id == User.Identity.GetUserId());
-        //            var fakeUser = new User { firstName = "Test", lastName = "Mai draga" };
-        //            var newGroup = new Group
-        //            {
-        //                CreatedBy = fakeUser,
-        //                Title = createdGroup.Title,
-        //                Description = createdGroup.Description,
-        //                NumberOfUsers = 1,
-        //                Users = new List<User>() { fakeUser }
-        //            };
-        //
-        //            _context.Groups.Add(newGroup);
-        //        }
+        [Authorize]
+        [HttpPost]
+        public ActionResult CreateGroup(Group createdGroup)
+        {
+
+            //            var createdBy = _context.Users.Single(u => u.Id == User.Identity.GetUserId());
+            var fakeUser = new User { firstName = "Test", lastName = "Mai draga" };
+            var newGroup = new Group
+            {
+                CreatedBy = fakeUser,
+                Title = createdGroup.Title,
+                Description = createdGroup.Description,
+                NumberOfUsers = 1,
+                Users = new List<User>() { fakeUser }
+            };
+
+            _context.GroupList.Add(newGroup);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Groups");
+        }
 
         private IEnumerable<Group> GetGroups()
         {

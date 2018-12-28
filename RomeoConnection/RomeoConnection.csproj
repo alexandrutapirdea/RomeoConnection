@@ -218,6 +218,14 @@
     <Compile Include="Migrations\201812281025358_PopulateUsersTable.Designer.cs">
       <DependentUpon>201812281025358_PopulateUsersTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812281716220_TestForGroups.cs" />
+    <Compile Include="Migrations\201812281716220_TestForGroups.Designer.cs">
+      <DependentUpon>201812281716220_TestForGroups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812281735415_Added GroupList to DbContext.cs" />
+    <Compile Include="Migrations\201812281735415_Added GroupList to DbContext.Designer.cs">
+      <DependentUpon>201812281735415_Added GroupList to DbContext.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -321,6 +329,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812281025358_PopulateUsersTable.resx">
       <DependentUpon>201812281025358_PopulateUsersTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812281716220_TestForGroups.resx">
+      <DependentUpon>201812281716220_TestForGroups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812281735415_Added GroupList to DbContext.resx">
+      <DependentUpon>201812281735415_Added GroupList to DbContext.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
