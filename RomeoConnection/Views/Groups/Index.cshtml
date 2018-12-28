@@ -1,0 +1,25 @@
+﻿@model IEnumerable<RomeoConnection.Models.Group>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Join a group !</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Titlu</th>
+            <th>Descriere</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var group in Model)
+        {
+            <tr>
+                <td>@group.Title</td>
+                <td>@group.Description</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
