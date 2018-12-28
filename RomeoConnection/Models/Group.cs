@@ -18,9 +18,11 @@ namespace RomeoConnection.Models
 
         public int NumberOfUsers { get; set; }
 
-        public List<User> Users { get; set; }
+        public List<ApplicationUser> Users { get; set; }
 
         [Required]
-        public User CreatedBy { get; set; }
+        public ApplicationUser CreatedBy { get; set; }
+
+        //DE INLOCUIT APPLICATIONUSER CU USER
     }
 }
