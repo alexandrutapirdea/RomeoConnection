@@ -6,10 +6,11 @@ namespace RomeoConnection.Models
 {
     public class Group
     {
+        public int Id { get; set; }
+
         [Required]
         [StringLength(254)]
         public String Title { get; set; }
-        public int Id { get; set; }
 
         [Required]
         [StringLength(3000)]

@@ -13,6 +13,13 @@ namespace RomeoConnection.Controllers
 
             return View(groups);
         }
+
+        public ActionResult CreateGroup()
+        {
+
+            return View();
+        }
+
         private IEnumerable<Group> GetGroups()
         {
             return new List<Group>
