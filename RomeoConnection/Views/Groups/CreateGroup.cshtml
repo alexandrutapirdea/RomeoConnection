@@ -10,13 +10,17 @@
 {
     <div class="form-group">
         @Html.LabelFor(group => group.Title)
-        @Html.TextBoxFor(group => group.Title, new {@class = "form-control"})
+        @Html.TextBoxFor(group => group.Title, new { @class = "form-control" })
         @Html.ValidationMessageFor(group => group.Title)
     </div>
     <div class="form-group">
         @Html.LabelFor(group => group.Description)
-        @Html.TextBoxFor(group => group.Description, new {@class = "form-control"})
+        @Html.TextBoxFor(group => group.Description, new { @class = "form-control" })
         @Html.ValidationMessageFor(group => group.Description)
     </div>
     <button type="submit" value="save" class="btn btn-primary">Save</button>
+}
+
+@section scripts {
+   @Scripts.Render("~/bundles/jqueryval")
 }
