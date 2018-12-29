@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNet.Identity;
 using RomeoConnection.Models;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -34,30 +36,48 @@ namespace RomeoConnection.Controllers
         public ActionResult CreateGroup(Group createdGroup)
         {
             var userId = User.Identity.GetUserId();
-            var fakeUser = _context.Users.Single(u => u.Id == userId);
-            //            var fakeUser = _context.Users.Single(u => u.Id == "3");
+            var currentUser = _context.Users.Single(u => u.Id == userId);
             var newGroup = new Group
             {
-                CreatedBy = fakeUser,
+                CreatedBy = currentUser,
+                CreadtedById = currentUser.Id,
                 Title = createdGroup.Title,
                 Description = createdGroup.Description,
                 NumberOfUsers = 1,
-                Users = new List<ApplicationUser>() { fakeUser }
+                Users = new List<ApplicationUser>() { currentUser }
             };
 
-            _context.GroupList.Add(newGroup);
-            _context.SaveChanges();
+
+
+            try
+            {
+                _context.GroupList.Add(newGroup);
+                _context.SaveChanges();
+                Debug.WriteLine("Felicitari Jordi");
+            }
+            catch (DbEntityValidationException ex)
+            {
+                foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in entityValidationErrors.ValidationErrors)
+                    {
+                        Debug.WriteLine("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                    }
+                }
+            }
 
             return RedirectToAction("Index", "Groups");
         }
 
         private IEnumerable<Group> GetGroups()
         {
-            return new List<Group>
-            {
-                new Group { Title = "Group de pisici", Description = "Giumanca iubieste pufoseniile" },
-                new Group { Title = "Alex Cojocaru", Description = "Tea party at 16:20" },
-            };
+            Debug.WriteLine(_context.GroupList);
+            //            return new List<Group>
+            //            {
+            //                new Group { Title = "Group de pisici", Description = "Giumanca iubieste pufoseniile" },
+            //                new Group { Title = "Alex Cojocaru", Description = "Tea party at 16:20" },
+            //            };
+            return _context.GroupList;
         }
     }
 }

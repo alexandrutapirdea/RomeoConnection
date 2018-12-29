@@ -12,6 +12,7 @@ namespace RomeoConnection.Models
         [StringLength(254)]
         public String Title { get; set; }
 
+
         [Required]
         [StringLength(3000)]
         public String Description { get; set; }
@@ -21,6 +22,7 @@ namespace RomeoConnection.Models
         public List<ApplicationUser> Users { get; set; }
 
         [Required]
+        public string CreadtedById { get; set; }
         public ApplicationUser CreatedBy { get; set; }
 
         //DE INLOCUIT APPLICATIONUSER CU USER
