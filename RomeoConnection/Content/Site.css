@@ -112,6 +112,8 @@ body {
 
 .field-validation-error {
     color: red;
+    font-weight: bold;
+    margin-top: 5%;
 }
 
 ul.dropdown-menu > li, ul.dropdown-menu > li>a , ul.dropdown-menu {
