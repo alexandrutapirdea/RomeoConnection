@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
-using System.Data.Entity;
 using RomeoConnection.ViewModels;
+using System.Data.Entity;
 
 namespace RomeoConnection.Models
 {
@@ -8,6 +8,8 @@ namespace RomeoConnection.Models
     {
         public DbSet<User> UsersList { get; set; }
         public DbSet<Group> GroupList { get; set; }
+
+        public DbSet<GroupMember> GroupMembers { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -16,6 +18,16 @@ namespace RomeoConnection.Models
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<GroupMember>()
+                .HasRequired(g => g.Group)
+                .WithMany() // later : m=> m.Member si sa adaug Member cu alt enter
+                .WillCascadeOnDelete(false);
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

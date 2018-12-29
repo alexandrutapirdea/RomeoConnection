@@ -206,11 +206,16 @@
     <Compile Include="Migrations\201812292000539_Fresh Start.Designer.cs">
       <DependentUpon>201812292000539_Fresh Start.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812292124484_Added GroupMembers.cs" />
+    <Compile Include="Migrations\201812292124484_Added GroupMembers.Designer.cs">
+      <DependentUpon>201812292124484_Added GroupMembers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Group.cs" />
+    <Compile Include="Models\GroupMember.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -301,6 +306,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201812292000539_Fresh Start.resx">
       <DependentUpon>201812292000539_Fresh Start.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812292124484_Added GroupMembers.resx">
+      <DependentUpon>201812292124484_Added GroupMembers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
