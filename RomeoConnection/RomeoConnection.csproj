@@ -202,61 +202,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812272023482_InitialModel.cs" />
-    <Compile Include="Migrations\201812272023482_InitialModel.Designer.cs">
-      <DependentUpon>201812272023482_InitialModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812272058263_CreateUserTable.cs" />
-    <Compile Include="Migrations\201812272058263_CreateUserTable.Designer.cs">
-      <DependentUpon>201812272058263_CreateUserTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812280952371_OverrideConventionsforUser.cs" />
-    <Compile Include="Migrations\201812280952371_OverrideConventionsforUser.Designer.cs">
-      <DependentUpon>201812280952371_OverrideConventionsforUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812281025358_PopulateUsersTable.cs" />
-    <Compile Include="Migrations\201812281025358_PopulateUsersTable.Designer.cs">
-      <DependentUpon>201812281025358_PopulateUsersTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812281716220_TestForGroups.cs" />
-    <Compile Include="Migrations\201812281716220_TestForGroups.Designer.cs">
-      <DependentUpon>201812281716220_TestForGroups.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812281735415_Added GroupList to DbContext.cs" />
-    <Compile Include="Migrations\201812281735415_Added GroupList to DbContext.Designer.cs">
-      <DependentUpon>201812281735415_Added GroupList to DbContext.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812281811240_Replace User with Application user for the moment.cs" />
-    <Compile Include="Migrations\201812281811240_Replace User with Application user for the moment.Designer.cs">
-      <DependentUpon>201812281811240_Replace User with Application user for the moment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812281851402_added foreinkey properties to Group.cs" />
-    <Compile Include="Migrations\201812281851402_added foreinkey properties to Group.Designer.cs">
-      <DependentUpon>201812281851402_added foreinkey properties to Group.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812281855407_correction.cs" />
-    <Compile Include="Migrations\201812281855407_correction.Designer.cs">
-      <DependentUpon>201812281855407_correction.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812281928595_I am stupid.cs" />
-    <Compile Include="Migrations\201812281928595_I am stupid.Designer.cs">
-      <DependentUpon>201812281928595_I am stupid.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812281935242_why.cs" />
-    <Compile Include="Migrations\201812281935242_why.Designer.cs">
-      <DependentUpon>201812281935242_why.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812291230461_Typo correction.cs" />
-    <Compile Include="Migrations\201812291230461_Typo correction.Designer.cs">
-      <DependentUpon>201812291230461_Typo correction.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812291553561_Added FirstName and LastName to model.cs" />
-    <Compile Include="Migrations\201812291553561_Added FirstName and LastName to model.Designer.cs">
-      <DependentUpon>201812291553561_Added FirstName and LastName to model.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812291847017_Added properties to ApplicationUser for Register Page.cs" />
-    <Compile Include="Migrations\201812291847017_Added properties to ApplicationUser for Register Page.Designer.cs">
-      <DependentUpon>201812291847017_Added properties to ApplicationUser for Register Page.cs</DependentUpon>
+    <Compile Include="Migrations\201812292000539_Fresh Start.cs" />
+    <Compile Include="Migrations\201812292000539_Fresh Start.Designer.cs">
+      <DependentUpon>201812292000539_Fresh Start.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -264,9 +212,9 @@
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -336,7 +284,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -352,47 +299,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201812272023482_InitialModel.resx">
-      <DependentUpon>201812272023482_InitialModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812272058263_CreateUserTable.resx">
-      <DependentUpon>201812272058263_CreateUserTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812280952371_OverrideConventionsforUser.resx">
-      <DependentUpon>201812280952371_OverrideConventionsforUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812281025358_PopulateUsersTable.resx">
-      <DependentUpon>201812281025358_PopulateUsersTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812281716220_TestForGroups.resx">
-      <DependentUpon>201812281716220_TestForGroups.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812281735415_Added GroupList to DbContext.resx">
-      <DependentUpon>201812281735415_Added GroupList to DbContext.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812281811240_Replace User with Application user for the moment.resx">
-      <DependentUpon>201812281811240_Replace User with Application user for the moment.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812281851402_added foreinkey properties to Group.resx">
-      <DependentUpon>201812281851402_added foreinkey properties to Group.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812281855407_correction.resx">
-      <DependentUpon>201812281855407_correction.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812281928595_I am stupid.resx">
-      <DependentUpon>201812281928595_I am stupid.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812281935242_why.resx">
-      <DependentUpon>201812281935242_why.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812291230461_Typo correction.resx">
-      <DependentUpon>201812291230461_Typo correction.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812291553561_Added FirstName and LastName to model.resx">
-      <DependentUpon>201812291553561_Added FirstName and LastName to model.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812291847017_Added properties to ApplicationUser for Register Page.resx">
-      <DependentUpon>201812291847017_Added properties to ApplicationUser for Register Page.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812292000539_Fresh Start.resx">
+      <DependentUpon>201812292000539_Fresh Start.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,14 +1,18 @@
-﻿using System;
+﻿using RomeoConnection.Models;
+using RomeoConnection.ViewModels;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using RomeoConnection.Models;
 
 namespace RomeoConnection.Controllers
 {
     public class UsersController : Controller
     {
+        private readonly ApplicationDbContext _context;
+
+        public UsersController()
+        {
+            _context = new ApplicationDbContext();
+        }
         // GET: Users
         public ActionResult Index()
         {
@@ -18,11 +22,23 @@ namespace RomeoConnection.Controllers
         }
         private IEnumerable<User> GetUsers()
         {
-            return new List<User>
+            var listOfApplicationUsers = _context.Users;
+            var listOfUsers = new List<User>();
+
+            foreach (var user in listOfApplicationUsers)
             {
-                new User { firstName ="John", lastName = "Giumanca" },
-                new User { firstName ="Alex", lastName = "Cojocaru" },                
-            };
+                var temporaryUser = new User();
+                temporaryUser.Description = user.Description;
+                temporaryUser.Birthday = user.BirthDay;
+                temporaryUser.FirstName = user.FirstName;
+                temporaryUser.LastName = user.LastName;
+                temporaryUser.JobTitle = user.JobTitle;
+                temporaryUser.Location = user.Location;
+
+                listOfUsers.Add(temporaryUser);
+
+            }
+            return listOfUsers;
         }
     }
 }

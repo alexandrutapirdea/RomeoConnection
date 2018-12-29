@@ -7,13 +7,13 @@ namespace RomeoConnection.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class OverrideConventionsforUser : IMigrationMetadata
+    public sealed partial class FreshStart : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(OverrideConventionsforUser));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(FreshStart));
         
         string IMigrationMetadata.Id
         {
-            get { return "201812280952371_OverrideConventionsforUser"; }
+            get { return "201812292000539_Fresh Start"; }
         }
         
         string IMigrationMetadata.Source
