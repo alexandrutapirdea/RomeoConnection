@@ -22,3 +22,101 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/*Bootsrap overrides*/
+
+@font-face {
+    font-family: Viga-Regular;
+    src: url(../fonts/Viga-Regular.ttf);
+}
+@font-face {
+    font-family: Viga-Regular;
+    src: url(../fonts/FiraSansCondensed-Regular.ttf);
+}
+
+
+.navbar-inverse {
+    background-color: #2D283E;
+    border-color: darkmagenta;
+}
+
+    .navbar-inverse .navbar-nav > li > a {
+        color: #D1D7E0;
+        font-family: Viga-Regular;
+        font-size: 18px;
+    }
+.navbar-inverse .navbar-nav > li > a:hover {
+    color: #FFF;
+}
+
+    .navbar-inverse .navbar-brand {
+        color: #D1D7E0;
+        font-family: Viga-Regular;
+        font-size: 24px;
+    }
+
+        .navbar-inverse .navbar-brand:hover {
+            color: #FFF;
+        }
+
+body {
+    background-color:#802BB1
+}
+
+p, label, h1, h2, h3, h4, h5, h6, td, th, dt {
+    color: #D1D7E0;
+    font-family: FiraSansCondensed-Regular;
+}
+a {
+    color: #FFF;
+  
+}
+
+    a:hover {
+        color: #FFF;
+        text-shadow: 0 0 5px #d9eb8c;
+    }
+
+td {
+    background-color: #802BB1
+}
+    td:hover {
+        background-color: #9432cc
+    }
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control:focus {
+    border-color: #2D283E;
+}
+
+body {
+    font-size: 18px;
+}
+
+.btn {
+    font-size: 18px;
+    background-color: #2d283e;
+    border-color: #802bb1;
+    color: #d1d7e0;
+}
+
+.btn:hover {
+    font-size: 18px;
+    background-color: #000000;
+    border-color: #802bb1;
+}
+
+.field-validation-error {
+    color: red;
+}
+
+
+/*/
+    COLOR : 
+    #802BB1
+    #2D283E
+    #D1D7E0
+*/
