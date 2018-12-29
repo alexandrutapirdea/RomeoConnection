@@ -35,12 +35,20 @@ namespace RomeoConnection.Controllers
         [HttpPost]
         public ActionResult CreateGroup(Group createdGroup)
         {
+            ModelState.Remove("CreatedById");
+            //            var errors = ModelState.Values.SelectMany(v => v.Errors);
+            //            Debug.WriteLine(errors);
+            if (!ModelState.IsValid)
+            {
+                //                Debug.WriteLine(!ModelState.IsValid);
+                return View("CreateGroup", createdGroup);
+            }
             var userId = User.Identity.GetUserId();
             var currentUser = _context.Users.Single(u => u.Id == userId);
             var newGroup = new Group
             {
                 CreatedBy = currentUser,
-                CreadtedById = currentUser.Id,
+                CreatedById = currentUser.Id,
                 Title = createdGroup.Title,
                 Description = createdGroup.Description,
                 NumberOfUsers = 1,
@@ -71,7 +79,7 @@ namespace RomeoConnection.Controllers
 
         private IEnumerable<Group> GetGroups()
         {
-            Debug.WriteLine(_context.GroupList);
+            //            Debug.WriteLine(_context.GroupList);
             //            return new List<Group>
             //            {
             //                new Group { Title = "Group de pisici", Description = "Giumanca iubieste pufoseniile" },

@@ -22,7 +22,7 @@ namespace RomeoConnection.Models
         public List<ApplicationUser> Users { get; set; }
 
         [Required]
-        public string CreadtedById { get; set; }
+        public string CreatedById { get; set; }
         public ApplicationUser CreatedBy { get; set; }
 
         //DE INLOCUIT APPLICATIONUSER CU USER
