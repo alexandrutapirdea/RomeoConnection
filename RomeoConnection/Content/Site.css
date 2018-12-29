@@ -53,6 +53,7 @@ textarea {
         color: #D1D7E0;
         font-family: Viga-Regular;
         font-size: 24px;
+        font-weight: bold;
     }
 
         .navbar-inverse .navbar-brand:hover {
@@ -112,6 +113,16 @@ body {
 .field-validation-error {
     color: red;
 }
+
+ul.dropdown-menu > li, ul.dropdown-menu > li>a , ul.dropdown-menu {
+    background-color: #2d283e;
+    color: #d1d7e0;
+}
+
+    ul.dropdown-menu > li:hover, ul.dropdown-menu > li > a:hover {
+        background-color: #802bb1;
+        color: #d1d7e0;
+    }
 
 
 /*/
