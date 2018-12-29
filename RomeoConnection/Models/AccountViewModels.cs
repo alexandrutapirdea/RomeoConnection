@@ -79,6 +79,25 @@ namespace RomeoConnection.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [StringLength(254)]
+        public string FirstName { get; set; }
+
+        [Required]
+        [StringLength(254)]
+        public string LastName { get; set; }
+
+        [StringLength(254)]
+        public string Location { get; set; }
+
+        public string Birthday { get; set; }
+
+        [StringLength(254)]
+        public string JobTitle { get; set; }
+
+        [StringLength(254)]
+        public string Description { get; set; }
     }
 
     public class ResetPasswordViewModel

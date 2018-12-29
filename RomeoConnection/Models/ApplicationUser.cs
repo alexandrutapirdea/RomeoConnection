@@ -16,6 +16,20 @@ namespace RomeoConnection.Models
         [Required]
         [StringLength(254)]
         public string LastName { get; set; }
+
+        [StringLength(254)]
+        public string Location { get; set; }
+
+        public string BirthDay { get; set; }
+
+        [StringLength(254)]
+        public string JobTitle { get; set; }
+
+        [StringLength(254)]
+        public string Description { get; set; }
+
+
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

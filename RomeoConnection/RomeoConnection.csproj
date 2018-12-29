@@ -254,6 +254,10 @@
     <Compile Include="Migrations\201812291553561_Added FirstName and LastName to model.Designer.cs">
       <DependentUpon>201812291553561_Added FirstName and LastName to model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812291847017_Added properties to ApplicationUser for Register Page.cs" />
+    <Compile Include="Migrations\201812291847017_Added properties to ApplicationUser for Register Page.Designer.cs">
+      <DependentUpon>201812291847017_Added properties to ApplicationUser for Register Page.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -386,6 +390,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812291553561_Added FirstName and LastName to model.resx">
       <DependentUpon>201812291553561_Added FirstName and LastName to model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812291847017_Added properties to ApplicationUser for Register Page.resx">
+      <DependentUpon>201812291847017_Added properties to ApplicationUser for Register Page.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
