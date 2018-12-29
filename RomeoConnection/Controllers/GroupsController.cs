@@ -33,6 +33,7 @@ namespace RomeoConnection.Controllers
 
         [Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult CreateGroup(Group createdGroup)
         {
             ModelState.Remove("CreatedById");
