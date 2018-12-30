@@ -231,6 +231,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\GroupViewModel.cs" />
     <Compile Include="ViewModels\User.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -298,6 +299,7 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Groups\Index.cshtml" />
     <Content Include="Views\Groups\CreateGroup.cshtml" />
+    <Content Include="Views\Groups\MyGroups.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

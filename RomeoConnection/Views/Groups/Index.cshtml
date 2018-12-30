@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RomeoConnection.Models.Group>
+﻿@model RomeoConnection.ViewModels.GroupViewModel
 @{
     ViewBag.Title = "Index";
 }
@@ -14,12 +14,23 @@
     </tr>
     </thead>
     <tbody>
-    @foreach (var group in Model)
+    @foreach (var group in Model.Groups )
     {
         <tr>
             <td>@group.Title</td>
             <td>@group.Description</td>
-            <td><button data-group-id="@group.Id" class ="btn btn-primary js-toggle-membership">Join</button></td>
+            <td>
+                @{
+                    if (Model.ShowActions)
+                    {
+                        <button data-group-id="@group.Id" class="btn btn-primary js-toggle-membership">Join</button>
+                    }
+                    else
+                    {
+                        <span>You must register befor joining a group</span>
+                    }
+                }
+            </td>
                 
         </tr>
     }

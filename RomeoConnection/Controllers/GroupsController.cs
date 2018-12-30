@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using RomeoConnection.Models;
+using RomeoConnection.ViewModels;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
@@ -12,6 +13,25 @@ namespace RomeoConnection.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+        [Authorize]
+        public ActionResult MyGroups()
+        {
+            var userId = User.Identity.GetUserId();
+            var groups = _context.GroupMembers
+                .Where(m => m.GroupMemberUserId == userId)
+                .Select(g => g.Group)
+                .ToList();
+            //Daca primesti null pointer exception trebuie sa adaugi Include(ceva => ceva.altceva),
+            // unde ceva si altceva sunt proprietatile din alte tabele ( de exemplu pentru calendar)
+            var viewModel = new GroupViewModel()
+            {
+                Groups = groups,
+                ShowActions = User.Identity.IsAuthenticated
+            };
+            return View(viewModel);
+
+        }
+
         public GroupsController()
         {
             _context = new ApplicationDbContext();
@@ -22,7 +42,13 @@ namespace RomeoConnection.Controllers
         {
             var groups = GetGroups();
 
-            return View(groups);
+            var viewModel = new GroupViewModel
+            {
+                Groups = groups,
+                ShowActions = User.Identity.IsAuthenticated,
+            };
+
+            return View(viewModel);
         }
         [Authorize]
         public ActionResult CreateGroup()
@@ -80,12 +106,7 @@ namespace RomeoConnection.Controllers
 
         private IEnumerable<Group> GetGroups()
         {
-            //            Debug.WriteLine(_context.GroupList);
-            //            return new List<Group>
-            //            {
-            //                new Group { Title = "Group de pisici", Description = "Giumanca iubieste pufoseniile" },
-            //                new Group { Title = "Alex Cojocaru", Description = "Tea party at 16:20" },
-            //            };
+
             return _context.GroupList;
         }
     }
