@@ -139,6 +139,54 @@ ul.dropdown-menu > li, ul.dropdown-menu > li>a , ul.dropdown-menu {
     }
 
 
+
+
+/*/ Second experiment for groups cards /*/
+/* .container { */
+/*     margin-top: 30px; */
+/*     margin-bottom: 30px; */
+/* } */
+
+.card-example {
+    max-width: 350px;
+    margin: 0 auto;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+     .card-example .card-header {
+         font-weight: 900;
+         color: #D1D7E0;
+         background: #20bc4c;
+     }
+
+.card-inverse {
+    background-color: #2d283e;
+    color: #d1d7e0;
+    /* padding-left: 100px; */
+    padding-bottom: 1px;
+    padding-top: 1px;
+    padding-right: 30px;
+    width: 300px;
+    text-align: center;
+}
+
+.card-text {
+    width: 100%;
+    text-align: center;
+    margin: 5%;
+}
+
+.card-title {
+    font-weight: bold;
+}
+.number {
+    margin: 5%;
+    font-size: 13px;
+    font-style: italic;
+}
+
+
+
 /*/
     COLOR : 
     #802BB1
