@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
+using RomeoConnection.Dtos;
 using RomeoConnection.Models;
+using System.Linq;
 using System.Web.Http;
 
 namespace RomeoConnection.Controllers
@@ -15,12 +17,20 @@ namespace RomeoConnection.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult GroupMember([FromBody]int groupId)
+        public IHttpActionResult GroupMember(GroupMembersDto dto)
         {
+            var userId = User.Identity.GetUserId();
+            var exists = _context.GroupMembers
+                .Any(m => m.GroupMemberUserId == userId
+                     && m.GroupId == dto.GroupId);
+
+            if (exists)
+                return BadRequest("You are already a member of this group");
+
             var member = new GroupMember()
             {
-                GroupId = groupId,
-                GroupMemberUserId = User.Identity.GetUserId(),
+                GroupId = dto.GroupId,
+                GroupMemberUserId = userId,
             };
             _context.GroupMembers.Add(member);
             _context.SaveChanges();

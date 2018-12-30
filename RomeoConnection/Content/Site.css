@@ -97,17 +97,30 @@ body {
     font-size: 18px;
 }
 
-.btn {
+.btn-primary {
     font-size: 18px;
     background-color: #2d283e;
     border-color: #802bb1;
     color: #d1d7e0;
 }
 
-.btn:hover {
+.btn-primary:hover {
     font-size: 18px;
     background-color: #000000;
     border-color: #802bb1;
+}
+
+.btn-member {
+    font-size: 18px;
+    background-color: #802bb1;
+    border-color: #000000;
+    color: #000000;
+}
+.btn-member:hover {
+    font-size: 18px;
+    background-color: #66268b;
+    border-color: #000000;
+    color: #cebaba;
 }
 
 .field-validation-error {

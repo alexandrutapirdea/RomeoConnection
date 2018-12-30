@@ -7,19 +7,45 @@
 
 <table class="table table-bordered table-hover">
     <thead>
-        <tr>
-            <th>Titlu</th>
-            <th>Descriere</th>
-        </tr>
+    <tr>
+        <th>Titlu</th>
+        <th>Descriere</th>
+        <th>Actions</th>
+    </tr>
     </thead>
     <tbody>
-        @foreach (var group in Model)
-        {
-            <tr>
-                <td>@group.Title</td>
-                <td>@group.Description</td>
-            </tr>
-        }
+    @foreach (var group in Model)
+    {
+        <tr>
+            <td>@group.Title</td>
+            <td>@group.Description</td>
+            <td><button data-group-id="@group.Id" class ="btn btn-primary js-toggle-membership">Join</button></td>
+                
+        </tr>
+    }
     </tbody>
 </table>
+
+@section scripts{
+    <script>
+
+        $(document).ready(function() {
+
+                $(".js-toggle-membership").click(function(e) {
+                    var button = $(e.target);
+                    $.post("api/GroupMembers", { groupId : button.attr("data-group-id") })
+
+            .done(function() {
+                            button
+                                .removeClass("btn-primary")
+                                .addClass("btn-member")
+                                .text("Joined");
+                        })
+            .fail(function() {
+                alert("Oops! Something failed! Try again");
+            });
+    });
+    });
+    </script>
+}
 
