@@ -16,9 +16,15 @@ namespace RomeoConnection.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            var user = GetUsers();
+            var users = GetUsers();
 
-            return View(user);
+            var usersViewModel = new UserViewModel()
+            {
+                Users = users,
+                ShowActions = User.Identity.IsAuthenticated
+            };
+
+            return View(usersViewModel);
         }
         private IEnumerable<User> GetUsers()
         {
@@ -34,6 +40,8 @@ namespace RomeoConnection.Controllers
                 temporaryUser.LastName = user.LastName;
                 temporaryUser.JobTitle = user.JobTitle;
                 temporaryUser.Location = user.Location;
+                temporaryUser.DisplayId = user.Id;
+
 
                 listOfUsers.Add(temporaryUser);
 

@@ -16,6 +16,10 @@ namespace RomeoConnection.Controllers
             _context = new ApplicationDbContext();
         }
 
+        //Cand verifici cu postman trebuie sa trimiti un obiect de tipul 
+        // { "GroupId" ="3"(ca string)} 
+        // daca trimiti direct un numar valoarea este null ( pentru ca astepata
+        // obiect si i-ai trimis int )
         [HttpPost]
         public IHttpActionResult GroupMember(GroupMembersDto dto)
         {
@@ -37,5 +41,7 @@ namespace RomeoConnection.Controllers
 
             return Ok();
         }
+
+
     }
 }

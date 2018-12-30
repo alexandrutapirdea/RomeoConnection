@@ -1,4 +1,4 @@
-﻿@model  IEnumerable < RomeoConnection.ViewModels.User >
+﻿@model  RomeoConnection.ViewModels.UserViewModel
 @{
     ViewBag.Title = "Index";
 }
@@ -17,7 +17,7 @@
     </tr>
     </thead>
     <tbody>
-    @foreach (var user in Model)
+    @foreach (var user in Model.Users)
     {
         <tr>
             <td>@user.FirstName</td>
@@ -26,9 +26,46 @@
             <td>@user.JobTitle</td>
             <td>@user.Birthday</td>
             <td>@user.Description</td>
+            <td>
+                @{
+                            if(Model.ShowActions)
+                    {
+                        <button data-user-id="@user.DisplayId" class="btn btn-primary js-toggle-follow">Join</button>
+                        <p class="number">33 de utilizatori s-au inscris deja</p>
 
+                    }
+                    else
+                    {
+                        <span>You must register before joining a group</span>
+                }
+                }
+
+            </td>
         </tr>
     }
     </tbody>
 </table>
+
+@section scripts{
+    <script>
+
+        $(document).ready(function() {
+
+            $(".js-toggle-follow").click(function(e) {
+                var button = $(e.target);
+                $.post("api/Followings", { FolloweeId : button.attr("data-user-id") })
+
+                    .done(function() {
+                        button
+                            .removeClass("btn-primary")
+                            .addClass("btn-member")
+                            .text("Joined");
+                    })
+                    .fail(function() {
+                        alert("Oops! Something failed! Try again");
+                    });
+            });
+        });
+    </script>
+}
 

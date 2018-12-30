@@ -205,11 +205,13 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FollowingsController.cs" />
     <Compile Include="Controllers\GroupMembersController.cs" />
     <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Dtos\FollowingDto.cs" />
     <Compile Include="Dtos\GroupMembersDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -222,10 +224,27 @@
     <Compile Include="Migrations\201812292124484_Added GroupMembers.Designer.cs">
       <DependentUpon>201812292124484_Added GroupMembers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812301357563_Added Following.cs" />
+    <Compile Include="Migrations\201812301357563_Added Following.Designer.cs">
+      <DependentUpon>201812301357563_Added Following.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812301622211_Changed User id data type to string.cs" />
+    <Compile Include="Migrations\201812301622211_Changed User id data type to string.Designer.cs">
+      <DependentUpon>201812301622211_Changed User id data type to string.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812301627152_Added show actions field.cs" />
+    <Compile Include="Migrations\201812301627152_Added show actions field.Designer.cs">
+      <DependentUpon>201812301627152_Added show actions field.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812301640193_Magic.cs" />
+    <Compile Include="Migrations\201812301640193_Magic.Designer.cs">
+      <DependentUpon>201812301640193_Magic.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\Following.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\GroupMember.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -233,6 +252,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\GroupViewModel.cs" />
     <Compile Include="ViewModels\User.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -300,6 +320,7 @@
     <Content Include="Views\Groups\Index.cshtml" />
     <Content Include="Views\Groups\CreateGroup.cshtml" />
     <Content Include="Views\Groups\MyGroups.cshtml" />
+    <Content Include="Views\Users\MyFriends.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -323,6 +344,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812292124484_Added GroupMembers.resx">
       <DependentUpon>201812292124484_Added GroupMembers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301357563_Added Following.resx">
+      <DependentUpon>201812301357563_Added Following.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301622211_Changed User id data type to string.resx">
+      <DependentUpon>201812301622211_Changed User id data type to string.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301627152_Added show actions field.resx">
+      <DependentUpon>201812301627152_Added show actions field.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301640193_Magic.resx">
+      <DependentUpon>201812301640193_Magic.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

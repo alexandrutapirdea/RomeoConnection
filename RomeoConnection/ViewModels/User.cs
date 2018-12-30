@@ -8,6 +8,8 @@ namespace RomeoConnection.ViewModels
     {
         public int Id { get; set; }
 
+        public string DisplayId { get; set; }
+
         [Required]
         [StringLength(254)]
         public String FirstName { get; set; }
@@ -29,6 +31,7 @@ namespace RomeoConnection.ViewModels
         public byte Age { get; set; }
 
         public Boolean IsPublicProfile { get; set; }
+
 
 
     }
