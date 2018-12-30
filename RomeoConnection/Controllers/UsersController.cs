@@ -47,6 +47,8 @@ namespace RomeoConnection.Controllers
             return View(viewModel);
 
         }
+
+
         private IEnumerable<User> GetUsers()
         {
             var listOfApplicationUsers = _context.Users;

@@ -14,9 +14,10 @@ namespace RomeoConnection.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+        private readonly ApplicationDbContext _context;
         public AccountController()
         {
+            _context = new ApplicationDbContext();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -178,6 +179,37 @@ namespace RomeoConnection.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        //Adaugat de Tap
+        public ActionResult Edit()
+        {
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            return View("Edit", user);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(ApplicationUser model)
+        {
+            ModelState.Remove("Email");
+            ModelState.Remove("Password");
+            ModelState.Remove("ConfirmPassword");
+            if (!ModelState.IsValid)
+            {
+
+                return View("Edit", model);
+            }
+
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            user.Description = model.Description;
+            user.BirthDay = model.BirthDay;
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.Location = model.Location;
+            user.JobTitle = model.JobTitle;
+
+            UserManager.Update(user);
+            return RedirectToAction("Index", "Home");
         }
 
         //
