@@ -1,39 +1,69 @@
-﻿@model RomeoConnection.ViewModels.GroupViewModel
+﻿@model  RomeoConnection.ViewModels.UserViewModel
 @{
-    ViewBag.Title = "MyGroups";
+    ViewBag.Title = "Index";
 }
 
-<h2>My Groups : </h2>
+<h2>List of users</h2>
 
 <table class="table table-bordered table-hover">
     <thead>
     <tr>
-        <th>Titlu</th>
-        <th>Descriere</th>
-        <th>Actions</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Location</th>
+        <th>Job Title</th>
+        <th>BirthDay</th>
+        <th>Description</th>
     </tr>
     </thead>
     <tbody>
-    @foreach (var group in Model.Groups)
+    @foreach (var user in Model.Users)
     {
         <tr>
-            <td>@group.Title</td>
-            <td>@group.Description</td>
+            <td>@user.FirstName</td>
+            <td>@user.LastName</td>
+            <td>@user.Location</td>
+            <td>@user.JobTitle</td>
+            <td>@user.Birthday</td>
+            <td>@user.Description</td>
             <td>
                 @{
-                    if (Model.ShowActions)
+                    if(Model.ShowActions)
                     {
-                        <button data-group-id="@group.Id" class="btn btn-primary js-toggle-membership">View Profile</button>
+                        <button data-user-id="@user.DisplayId" class="btn btn-primary js-toggle-follow">View profile</button>
                     }
                     else
                     {
-                        <span>You must register befor joining a group</span>
+                        <span>You must register before joining a group</span>
                     }
                 }
-            </td>
 
+            </td>
         </tr>
     }
     </tbody>
 </table>
+
+@section scripts{
+    <script>
+
+        $(document).ready(function() {
+
+            $(".js-toggle-follow").click(function(e) {
+                var button = $(e.target);
+                $.post("api/Followings", { FolloweeId : button.attr("data-user-id") })
+
+                    .done(function() {
+                        button
+                            .removeClass("btn-primary")
+                            .addClass("btn-member")
+                            .text("Request sent");
+                    })
+                    .fail(function() {
+                        alert("Oops! Something failed! Try again");
+                    });
+            });
+        });
+    </script>
+}
 
