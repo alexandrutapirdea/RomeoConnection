@@ -64,6 +64,7 @@ namespace RomeoConnection.Controllers
                 temporaryUser.JobTitle = user.JobTitle;
                 temporaryUser.Location = user.Location;
                 temporaryUser.DisplayId = user.Id;
+                temporaryUser.ProfilePicture = user.ProfilePicture;
 
 
                 listOfUsers.Add(temporaryUser);
@@ -86,6 +87,7 @@ namespace RomeoConnection.Controllers
                 temporaryUser.JobTitle = user.JobTitle;
                 temporaryUser.Location = user.Location;
                 temporaryUser.DisplayId = user.Id;
+                temporaryUser.ProfilePicture = user.ProfilePicture;
 
 
                 listOfUsers.Add(temporaryUser);

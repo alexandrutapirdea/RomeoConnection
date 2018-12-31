@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Web;
 
 namespace RomeoConnection.Models
@@ -102,6 +103,7 @@ namespace RomeoConnection.Models
 
         public byte[] ProfilePicture { get; set; }
 
+        [NotMapped]
         public HttpPostedFileBase UserProfilePicture { get; set; }
     }
 

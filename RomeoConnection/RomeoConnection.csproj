@@ -240,6 +240,10 @@
     <Compile Include="Migrations\201812301640193_Magic.Designer.cs">
       <DependentUpon>201812301640193_Magic.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812311141228_ProfilePicture.cs" />
+    <Compile Include="Migrations\201812311141228_ProfilePicture.Designer.cs">
+      <DependentUpon>201812311141228_ProfilePicture.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -325,6 +329,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Image\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -357,6 +362,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812301640193_Magic.resx">
       <DependentUpon>201812301640193_Magic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812311141228_ProfilePicture.resx">
+      <DependentUpon>201812311141228_ProfilePicture.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
