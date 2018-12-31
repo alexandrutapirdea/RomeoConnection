@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace RomeoConnection.Models
 {
@@ -38,8 +39,9 @@ namespace RomeoConnection.Models
 
         [StringLength(254)]
         public string Description { get; set; }
+        public byte[] ProfilePicture { get; set; }
 
-
+        public HttpPostedFileBase UserProfilePicture { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

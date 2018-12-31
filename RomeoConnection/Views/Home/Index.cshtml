@@ -3,15 +3,13 @@
 }
 <h1>@ViewBag.Title</h1>
 <h2>Wellcome to RomeoConnect</h2>
-<p>
-
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ornare tortor nec sapien condimentum condimentum. Ut faucibus felis at egestas pharetra. Ut rhoncus feugiat malesuada. Nulla hendrerit erat nec massa pulvinar porta. Cras et fermentum nulla, sed venenatis nulla. Morbi urna nulla, tempus id eros iaculis, elementum malesuada orci. Sed in consectetur arcu. Sed pharetra consectetur erat, ac tempus erat commodo sit amet. Nam aliquet mi nec mauris facilisis euismod. Phasellus fermentum consequat nisi, mollis euismod nibh bibendum vitae. Sed porttitor ante sit amet nibh dapibus, eget venenatis nisl bibendum. Nunc accumsan ultricies vehicula.
-
-    In tempus placerat consectetur. Vestibulum ac leo quis augue pellentesque volutpat eget eleifend metus. Integer sit amet metus quis libero lobortis aliquet. Fusce eget nisi sed velit dictum euismod. Donec non arcu lobortis, vehicula leo ut, pharetra tellus. Nullam vehicula, justo sit amet suscipit bibendum, eros velit tincidunt arcu, non fringilla arcu mauris ut velit. Sed bibendum elit sed est pellentesque consectetur. In dictum eros nec nibh pharetra tempus. Vestibulum ultrices metus ut mi tincidunt, sed tincidunt purus mollis. Donec at egestas ante. Praesent aliquet nibh nec enim ultricies pharetra. Mauris mattis efficitur tellus, eu semper orci tempus vitae.
-
-    Maecenas suscipit lacus quis suscipit mattis. Morbi nec ligula aliquam, maximus augue in, accumsan dui. Morbi nec dui rhoncus, aliquet dui sed, luctus velit. Morbi mi turpis, cursus sit amet purus eu, lacinia tempor nisl. Nam tristique in leo a molestie. In hendrerit sollicitudin orci ut auctor. Duis imperdiet malesuada ultricies. Donec in felis nisl.
-
-    Sed sed diam ut lectus porta suscipit quis vulputate lacus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec bibendum hendrerit mi at dapibus. Morbi blandit ut nisi eget sodales. Proin convallis tincidunt pretium. Nulla tincidunt vitae velit nec malesuada. Aenean commodo vel lectus a rutrum. Nullam et semper nibh, vel ullamcorper tortor. Maecenas at posuere mauris. Mauris nec odio non massa dignissim consequat. Pellentesque pharetra, ipsum id ultricies suscipit, lacus quam ornare ante, mattis mollis augue arcu dapibus est. Fusce sit amet dui et velit ultrices vestibulum.
-
-    Donec in gravida mauris, non convallis odio. Maecenas ac lacinia tellus, sed gravida nisl. Fusce mattis fermentum odio, nec lacinia odio ullamcorper id. Maecenas convallis semper fringilla. Ut commodo in tortor efficitur consequat. Nulla consectetur mauris arcu, eu porttitor nibh porta a. Cras sit amet ligula tempor, varius tortor non, vehicula neque. Donec dolor lectus, dictum nec elit a, condimentum finibus orci. Aenean porttitor felis et accumsan placerat. Duis at imperdiet tortor.
-</p>
+@{
+    if (User.Identity.IsAuthenticated)
+    {
+        <h3>Timeline</h3>
+    }
+    else
+    {
+        <h3>Connect with next boyfriend and let's have fun on RomeConnect. </h3>
+    }
+}

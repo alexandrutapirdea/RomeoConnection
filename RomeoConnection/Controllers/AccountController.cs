@@ -149,6 +149,13 @@ namespace RomeoConnection.Controllers
         {
             if (ModelState.IsValid)
             {
+                //                var fileName = Path.GetFileNameWithoutExtension(model.ImageFile.FileName);
+                //                var extension = Path.GetExtension(model.ImageFile.FileName);
+                //                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                //                model.ImagePath = "~/Image/" + fileName;
+                //                fileName = Path.Combine(Server.MapPath("~/Image/"), fileName);
+                byte[] data = new byte[model.UserProfilePicture.ContentLength];
+                model.UserProfilePicture.InputStream.Read(data, 0, model.UserProfilePicture.ContentLength);
                 var user = new ApplicationUser
                 {
                     UserName = model.Email,
@@ -159,6 +166,7 @@ namespace RomeoConnection.Controllers
                     JobTitle = model.JobTitle,
                     BirthDay = model.Birthday,
                     Description = model.Description,
+                    ProfilePicture = data,
 
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);

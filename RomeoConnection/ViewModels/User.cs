@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web;
 
 namespace RomeoConnection.ViewModels
 {
@@ -9,6 +10,8 @@ namespace RomeoConnection.ViewModels
         public int Id { get; set; }
 
         public string DisplayId { get; set; }
+
+        public string ImagePath { get; set; }
 
         [Required]
         [StringLength(254)]
@@ -31,6 +34,8 @@ namespace RomeoConnection.ViewModels
         public byte Age { get; set; }
 
         public Boolean IsPublicProfile { get; set; }
+
+        public HttpPostedFileBase ImageFile { get; set; }
 
 
 
