@@ -51,32 +51,18 @@ namespace RomeoConnection.Controllers
 
         private IEnumerable<User> GetUsers()
         {
-            var listOfApplicationUsers = _context.Users;
-            var listOfUsers = new List<User>();
+            var listOfApplicationUsers = _context.Users
+                                         .Where(u => u.IsPrivateProfile == false)
+                                         .ToList();
 
-            foreach (var user in listOfApplicationUsers)
-            {
-                var temporaryUser = new User();
-                temporaryUser.Description = user.Description;
-                temporaryUser.Birthday = user.BirthDay;
-                temporaryUser.FirstName = user.FirstName;
-                temporaryUser.LastName = user.LastName;
-                temporaryUser.JobTitle = user.JobTitle;
-                temporaryUser.Location = user.Location;
-                temporaryUser.DisplayId = user.Id;
-                temporaryUser.ProfilePicture = user.ProfilePicture;
-
-
-                listOfUsers.Add(temporaryUser);
-
-            }
-            return listOfUsers;
+            return ApplicationUsersToUsersList(listOfApplicationUsers);
         }
 
         private IEnumerable<User> ApplicationUsersToUsersList(List<ApplicationUser> listOfApplicationUsers)
         {
             var listOfUsers = new List<User>();
 
+            // map ApplicationUser to User ( remove additional info such as email or password )
             foreach (var user in listOfApplicationUsers)
             {
                 var temporaryUser = new User();
@@ -88,6 +74,7 @@ namespace RomeoConnection.Controllers
                 temporaryUser.Location = user.Location;
                 temporaryUser.DisplayId = user.Id;
                 temporaryUser.ProfilePicture = user.ProfilePicture;
+                temporaryUser.IsPrivateProfile = user.IsPrivateProfile;
 
 
                 listOfUsers.Add(temporaryUser);

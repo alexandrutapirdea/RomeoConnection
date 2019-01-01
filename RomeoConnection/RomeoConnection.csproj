@@ -244,6 +244,10 @@
     <Compile Include="Migrations\201812311141228_ProfilePicture.Designer.cs">
       <DependentUpon>201812311141228_ProfilePicture.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901011813394_Added privacy checkbox.cs" />
+    <Compile Include="Migrations\201901011813394_Added privacy checkbox.Designer.cs">
+      <DependentUpon>201901011813394_Added privacy checkbox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -365,6 +369,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812311141228_ProfilePicture.resx">
       <DependentUpon>201812311141228_ProfilePicture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901011813394_Added privacy checkbox.resx">
+      <DependentUpon>201901011813394_Added privacy checkbox.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

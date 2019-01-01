@@ -5,8 +5,8 @@
 
 <h2>@ViewBag.Title.</h2>
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, 
-                            new { @class = "form-horizontal", role = "form", enctype="multipart/form-data" }))
+@using (Html.BeginForm("Register", "Account", FormMethod.Post,
+                            new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <h4>Create a new account.</h4>
@@ -15,14 +15,14 @@
     @Html.ValidationSummary("", new { @class = "text-danger" })
     // First Name
     <div class="form-group">
-        @Html.LabelFor(m => m.FirstName,"First Name", new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.FirstName, "First Name", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
         </div>
     </div>
     // Last Name
     <div class="form-group">
-        @Html.LabelFor(m => m.LastName,"Last Name", new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.LastName, "Last Name", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
         </div>
@@ -30,21 +30,21 @@
 
     // Email
     <div class="form-group">
-        @Html.LabelFor(m => m.Email,"Email", new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.Email, "Email", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
         </div>
     </div>
     // Password
     <div class="form-group">
-        @Html.LabelFor(m => m.Password,"Password", new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.Password, "Password", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
         </div>
     </div>
     // ConfirmPassword
     <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword,"Confirm Password", new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.ConfirmPassword, "Confirm Password", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
         </div>
@@ -67,7 +67,7 @@
     </div>
     // JobTitle
     <div class="form-group">
-        @Html.LabelFor(m => m.JobTitle,"Job Title", new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.JobTitle, "Job Title", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.JobTitle, new { @class = "form-control" })
         </div>
@@ -81,11 +81,19 @@
     </div>
     // ImagePath
     <div class="form-group">
-    @Html.LabelFor(m => m.ProfilePicture, new { @class = "col-md-2 control-label"})
-    <div class="col-md-10">
-        @Html.TextBoxFor(m => m.UserProfilePicture, new {type = "file"})
-        @Html.ValidationMessage("CustomMessage")
+        @Html.LabelFor(m => m.ProfilePicture, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.UserProfilePicture, new { type = "file" })
+            @Html.ValidationMessage("CustomMessage")
+        </div>
     </div>
+    // IsPrivateProfile
+    <div class="form-group">
+        @Html.LabelFor(m => m.IsPrivateProfile,"Make your profile private ?", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.CheckBoxFor(m => m.IsPrivateProfile, new {  })
+            @Html.ValidationMessage("CustomMessage")
+        </div>
     </div>
     // SubmitButton
     <div class="form-group">

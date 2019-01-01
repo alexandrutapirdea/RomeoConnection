@@ -34,7 +34,7 @@ namespace RomeoConnection.ViewModels
 
         public byte Age { get; set; }
 
-        public Boolean IsPublicProfile { get; set; }
+        public Boolean IsPrivateProfile { get; set; }
 
         public byte[] ProfilePicture { get; set; }
 

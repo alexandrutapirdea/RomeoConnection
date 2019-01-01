@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Web;
@@ -105,6 +106,8 @@ namespace RomeoConnection.Models
 
         [NotMapped]
         public HttpPostedFileBase UserProfilePicture { get; set; }
+
+        public Boolean IsPrivateProfile { get; set; }
     }
 
     public class ResetPasswordViewModel
