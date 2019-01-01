@@ -1,65 +1,82 @@
-﻿@model  RomeoConnection.ViewModels.UserViewModel
+﻿@using Microsoft.Ajax.Utilities
+@model  RomeoConnection.ViewModels.UserViewModel
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>List of users</h2>
+<h2>My friends :</h2>
 
 <table class="table table-bordered table-hover">
     <thead>
-    <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Location</th>
-        <th>Job Title</th>
-        <th>BirthDay</th>
-        <th>Description</th>
-    </tr>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Picture</th>
+            <th>Location</th>
+            <th>Job Title</th>
+            <th>BirthDay</th>
+            <th>Description</th>
+            <th>IsPrivate</th>
+        </tr>
     </thead>
     <tbody>
-    @foreach (var user in Model.Users)
-    {
-        <tr>
-            <td>@user.FirstName</td>
-            <td>@user.LastName</td>
-            <td>@user.Location</td>
-            <td>@user.JobTitle</td>
-            <td>@user.Birthday</td>
-            <td>@user.Description</td>
-            <td>
-                @{
-                    if(Model.ShowActions)
-                    {
-                        <button data-user-id="@user.DisplayId" class="btn btn-primary js-toggle-follow">View profile</button>
-                    }
-                    else
-                    {
-                        <span>You must register before joining a group</span>
-                    }
-                }
+        @foreach (var user in Model.Users)
+        {
+            var base64 = "";
+            if (user.ProfilePicture != null && user.ProfilePicture.Length > 0)
+            {
 
-            </td>
-        </tr>
-    }
+                base64 = Convert.ToBase64String(user.ProfilePicture);
+            }
+
+            <tr>
+                <td>@user.FirstName</td>
+                <td>@user.LastName</td>
+                <td>
+                    <img alt="" src='@(string.Format("data:image/jpeg;base64,{0}", base64))'
+                         width="200px" , height="auto" />
+                </td>
+                <td>@user.Location</td>
+                <td>@user.JobTitle</td>
+                <td>@user.Birthday</td>
+                <td>@user.Description</td>
+                <td>@user.IsPrivateProfile</td>
+                <td>
+                    @{
+                        if (Model.ShowActions)
+                        {
+                            <button data-user-id="@user.DisplayId" class="btn btn-primary js-toggle-follow">Add Friend</button>
+                            <p class="number">Aveti 8 prieteni comuni</p>
+
+                        }
+                        else
+                        {
+                            <span>You must register before sending friend requests</span>
+                        }
+                    }
+
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 
 @section scripts{
     <script>
 
-        $(document).ready(function() {
+        $(document).ready(function () {
 
-            $(".js-toggle-follow").click(function(e) {
+            $(".js-toggle-follow").click(function (e) {
                 var button = $(e.target);
-                $.post("api/Followings", { FolloweeId : button.attr("data-user-id") })
+                $.post("api/Followings", { FolloweeId: button.attr("data-user-id") })
 
-                    .done(function() {
+                    .done(function () {
                         button
                             .removeClass("btn-primary")
                             .addClass("btn-member")
                             .text("Request sent");
                     })
-                    .fail(function() {
+                    .fail(function () {
                         alert("Oops! Something failed! Try again");
                     });
             });

@@ -1,0 +1,38 @@
+﻿@model RomeoConnection.Models.ApplicationUser
+
+<table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Picture</th>
+        <th>Location</th>
+        <th>Job Title</th>
+        <th>BirthDay</th>
+        <th>Description</th>
+        <th>IsPrivate</th>
+    </tr>
+    </thead>
+    <tbody>
+    @{
+        var base64 = "";
+        if (Model.ProfilePicture != null && Model.ProfilePicture.Length > 0)
+        {
+            var aux = Model.ProfilePicture;
+            base64 = Convert.ToBase64String(aux);
+        }
+
+        <tr>
+            <td>@Model.FirstName</td>
+            <td>@Model.LastName</td>
+            <td><img alt="" src='@(string.Format("data:image/jpeg;base64,{0}", base64))'
+                     width="200px", height="auto"/></td>
+            <td>@Model.Location</td>
+            <td>@Model.JobTitle</td>
+            <td>@Model.BirthDay</td>
+            <td>@Model.Description</td>
+            <td>@Model.IsPrivateProfile</td>
+        </tr>
+    }
+    </tbody>
+</table>

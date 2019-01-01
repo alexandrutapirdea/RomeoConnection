@@ -48,6 +48,19 @@ namespace RomeoConnection.Controllers
 
         }
 
+        public ActionResult ViewProfile(string id)
+        {
+
+            var user = _context.Users.Where(u => u.Id == id).First();
+            //            var selectedUser = ApplicationUsersToUsersList(new List<ApplicationUser> { user });
+
+
+            if (!user.IsPrivateProfile)
+                return View(user);
+
+            return RedirectToAction("Index", "Users");
+        }
+
 
         private IEnumerable<User> GetUsers()
         {

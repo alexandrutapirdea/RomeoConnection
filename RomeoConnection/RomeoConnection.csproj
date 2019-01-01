@@ -330,6 +330,7 @@
     <Content Include="Views\Groups\MyGroups.cshtml" />
     <Content Include="Views\Users\MyFriends.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
+    <Content Include="Views\Users\ViewProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
