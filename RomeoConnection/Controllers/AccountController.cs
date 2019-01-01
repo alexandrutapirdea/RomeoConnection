@@ -2,6 +2,8 @@
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using RomeoConnection.Models;
+using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -149,11 +151,7 @@ namespace RomeoConnection.Controllers
         {
             if (ModelState.IsValid)
             {
-                //                var fileName = Path.GetFileNameWithoutExtension(model.ImageFile.FileName);
-                //                var extension = Path.GetExtension(model.ImageFile.FileName);
-                //                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                //                model.ImagePath = "~/Image/" + fileName;
-                //                fileName = Path.Combine(Server.MapPath("~/Image/"), fileName);
+
                 byte[] data = new byte[model.UserProfilePicture.ContentLength];
                 model.UserProfilePicture.InputStream.Read(data, 0, model.UserProfilePicture.ContentLength);
                 var user = new ApplicationUser
@@ -209,6 +207,17 @@ namespace RomeoConnection.Controllers
                 return View("Edit", model);
             }
 
+            byte[] data = null;
+            try
+            {
+                data = new byte[model.UserProfilePicture.ContentLength];
+                model.UserProfilePicture.InputStream.Read(data, 0, model.UserProfilePicture.ContentLength);
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine("Problema este : {0} ", exception.Message);
+            }
+
             var user = UserManager.FindById(User.Identity.GetUserId());
             user.Description = model.Description;
             user.BirthDay = model.BirthDay;
@@ -216,8 +225,12 @@ namespace RomeoConnection.Controllers
             user.LastName = model.LastName;
             user.Location = model.Location;
             user.JobTitle = model.JobTitle;
+            if (data != null && data.Length > 0)
+                user.ProfilePicture = data;
+            user.IsPrivateProfile = model.IsPrivateProfile;
 
             UserManager.Update(user);
+
             return RedirectToAction("Index", "Home");
         }
 
