@@ -31,7 +31,8 @@
         <tr>
             <td>@user.FirstName</td>
             <td>@user.LastName</td>
-            <td><img alt="" src='@(string.Format("data:image/jpeg;base64,{0}", base64))' />@user.ProfilePicture</td>
+            <td><img alt="" src='@(string.Format("data:image/jpeg;base64,{0}", base64))'
+                     width="200px", height="auto"/></td>
             <td>@user.Location</td>
             <td>@user.JobTitle</td>
             <td>@user.Birthday</td>
