@@ -13,6 +13,12 @@ namespace RomeoConnection.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+        public GroupsController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+
         [Authorize]
         public ActionResult MyGroups()
         {
@@ -30,11 +36,6 @@ namespace RomeoConnection.Controllers
             };
             return View(viewModel);
 
-        }
-
-        public GroupsController()
-        {
-            _context = new ApplicationDbContext();
         }
 
         // GET: Groups
@@ -81,8 +82,6 @@ namespace RomeoConnection.Controllers
                 NumberOfUsers = 1,
                 Users = new List<ApplicationUser>() { currentUser }
             };
-
-
 
             try
             {

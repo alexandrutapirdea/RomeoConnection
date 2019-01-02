@@ -1,16 +1,21 @@
-﻿using System;
+﻿using RomeoConnection.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace RomeoConnection.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ApplicationDbContext _context;
+
+        public HomeController()
+        {
+            _context = new ApplicationDbContext();
+        }
         public ActionResult Index()
         {
-            return View();
+            var groups = GetPosts();
+            return View(groups);
         }
 
         public ActionResult About()
@@ -26,5 +31,15 @@ namespace RomeoConnection.Controllers
 
             return View();
         }
+
+        private IEnumerable<UserPost> GetPosts()
+        {
+
+            return _context.UserPostsList;
+
+        }
+
+
+
     }
 }

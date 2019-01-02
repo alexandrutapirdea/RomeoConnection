@@ -1,0 +1,35 @@
+﻿@model  RomeoConnection.Models.UserPost
+@{
+    ViewBag.Title = "CreatePost";
+}
+
+<h2>Say something...</h2>
+@using (Html.BeginForm("CreatePost", "UserPost", FormMethod.Post, 
+    new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(post => post.Title)
+        @Html.TextBoxFor(post => post.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(post => post.Title)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(post => post.Description)
+        @Html.TextBoxFor(post => post.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(post => post.Description)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(post => post.PostPicture, "Add a picture ", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(post => post.UserPostPicture, new { type = "file" })
+            @Html.ValidationMessage("CustomMessage")
+        </div>
+    </div>
+    <br/>
+    <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Post" />
+    </div>
+
+
+}
+

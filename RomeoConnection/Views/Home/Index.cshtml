@@ -1,13 +1,42 @@
-﻿@{
+﻿@model  IEnumerable< RomeoConnection.Models.UserPost >
+@{
     ViewBag.Title = "Home Page";
 }
 <h1>@ViewBag.Title</h1>
 <h2>Wellcome to RomeoConnect</h2>
+
+
 @{
-                                                            
+
     if (User.Identity.IsAuthenticated)
     {
+
         <h3>Timeline</h3>
+        if (Model != null)
+        {
+            foreach (var post in Model)
+            {
+                var base64 = "";
+               // var currentUser = ;
+                if (post.PostPicture != null && post.PostPicture.Length > 0)
+                {
+                    var aux = post.PostPicture;
+                    base64 = Convert.ToBase64String(aux);
+                }
+                 <p>Author : @post.ApplicationUser.FirstName</p>
+                <div style="background: #2D283E; margin:3%">
+                @* <p>@post.ApplicationUser.FirstName</p> *@
+                <p>@post.Title</p>
+                <p>@post.Description</p>
+                <img alt="" src='@(string.Format("data:image/jpeg;base64,{0}", base64))'
+                     width="200px", height="auto" alt="nu se incarca"/>
+                </div>
+            }
+        }
+        else
+        {
+            <p>Nu exista nicio postare</p>
+        }
     }
     else
     {

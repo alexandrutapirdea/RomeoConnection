@@ -6,8 +6,11 @@ namespace RomeoConnection.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+
         public DbSet<User> UsersList { get; set; }
         public DbSet<Group> GroupList { get; set; }
+
+        public DbSet<UserPost> UserPostsList { get; set; }
 
         public DbSet<GroupMember> GroupMembers { get; set; }
         public DbSet<Following> Followings { get; set; }

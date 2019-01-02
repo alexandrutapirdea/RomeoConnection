@@ -55,7 +55,7 @@ namespace RomeoConnection.Controllers
             //            var selectedUser = ApplicationUsersToUsersList(new List<ApplicationUser> { user });
 
 
-            if (!user.IsPrivateProfile)
+            if (user != null && !user.IsPrivateProfile)
                 return View(user);
 
             return RedirectToAction("Index", "Users");
