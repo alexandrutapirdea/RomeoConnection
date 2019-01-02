@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using RomeoConnection.Models;
 using RomeoConnection.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -16,14 +17,25 @@ namespace RomeoConnection.Controllers
             _context = new ApplicationDbContext();
         }
         // GET: Users
-        public ActionResult Index()
+        public ActionResult Index(string query = null)
         {
             var users = GetUsers();
+
+            if (!String.IsNullOrWhiteSpace(query))
+            {
+                users = users
+                    .Where(u => u.FirstName.Contains(query) ||
+                                u.LastName.Contains(query));
+
+                // u.Location.Contains(query) 
+                // u.JobTitle.Contains(query));
+            }
 
             var usersViewModel = new UserViewModel()
             {
                 Users = users,
-                ShowActions = User.Identity.IsAuthenticated
+                ShowActions = User.Identity.IsAuthenticated,
+                SearchTerm = query,
             };
 
             return View(usersViewModel);
@@ -61,6 +73,11 @@ namespace RomeoConnection.Controllers
             return RedirectToAction("Index", "Users");
         }
 
+        [HttpPost]
+        public ActionResult Search(UserViewModel viewModel)
+        {
+            return RedirectToAction("Index", "Users", new { query = viewModel.SearchTerm });
+        }
 
         private IEnumerable<User> GetUsers()
         {

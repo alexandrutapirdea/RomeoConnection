@@ -23,14 +23,14 @@
                     var aux = post.PostPicture;
                     base64 = Convert.ToBase64String(aux);
                 }
-                 <p>Author : @post.ApplicationUser.FirstName</p>
                 <div style="background: #2D283E; margin:3%">
-                @* <p>@post.ApplicationUser.FirstName</p> *@
-                <p>@post.Title</p>
-                <p>@post.Description</p>
-                <img alt="" src='@(string.Format("data:image/jpeg;base64,{0}", base64))'
-                     width="200px", height="auto" alt="nu se incarca"/>
+                    <p>Author : @post.ApplicationUser.FirstName</p>
+                    <p>@post.Title</p>
+                    <p>@post.Description</p>
+                    <img alt="" src='@(string.Format("data:image/jpeg;base64,{0}", base64))'
+                         width="200px", height="auto" alt="nu se incarca"/>
                 </div>
+
             }
         }
         else

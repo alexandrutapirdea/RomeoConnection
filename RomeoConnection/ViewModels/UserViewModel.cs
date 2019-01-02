@@ -7,5 +7,6 @@ namespace RomeoConnection.ViewModels
     {
         public IEnumerable<User> Users { get; set; }
         public Boolean ShowActions { get; set; }
+        public string SearchTerm { get; set; }
     }
 }

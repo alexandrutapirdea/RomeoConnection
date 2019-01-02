@@ -185,6 +185,11 @@ ul.dropdown-menu > li, ul.dropdown-menu > li>a , ul.dropdown-menu {
     font-style: italic;
 }
 
+#search-users {
+    margin: 3%;
+    width: 300px !important;
+}
+
 
 
 /*/

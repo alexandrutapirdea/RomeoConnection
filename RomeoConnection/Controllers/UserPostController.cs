@@ -17,6 +17,7 @@ namespace RomeoConnection.Controllers
             _context = new ApplicationDbContext();
         }
         // GET: UserPost
+        [Authorize]
         public ActionResult CreatePost()
         {
             return View();

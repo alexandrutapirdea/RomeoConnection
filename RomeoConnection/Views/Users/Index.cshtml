@@ -4,6 +4,19 @@
     ViewBag.Title = "Index";
 }
 
+@using (Html.BeginForm("Search", "Users"))
+{
+    <h2>Search for your friends</h2>
+    <div class="form-group">
+        <div class="input-group" id="search-users">
+            @Html.TextBoxFor(u => u.SearchTerm, new { @class = "form-control" , placeholder="Search by First Name or Last Name"})
+            <span class="input-group-addon">
+                <i class="glyphicon glyphicon-search"></i>
+            </span>
+        </div>
+    </div>
+}
+
 <h2>List of users</h2>
 
 <table class="table table-bordered table-hover">
@@ -42,22 +55,22 @@
             <td>@user.IsPrivateProfile</td>
             <td>
                 @{
-                            if(Model.ShowActions)
+                    if (Model.ShowActions)
                     {
                         <button data-user-id="@user.DisplayId" class="btn btn-primary js-toggle-follow">Add Friend</button>
                         <p class="number">Aveti 8 prieteni comuni</p>
-                        <button class="btn btn-primary"><a href="@Url.Action("ViewProfile","Users", new {id = user.DisplayId})">View profile</a></button>
+                        <button class="btn btn-primary"><a href="@Url.Action("ViewProfile", "Users", new { id = user.DisplayId })">View profile</a></button>
 
                     }
                     else
                     {
                         <span>You must register before sending friend requests</span>
-                }
+                    }
                 }
 
             </td>
         </tr>
-    }
+                        }
     </tbody>
 </table>
 
