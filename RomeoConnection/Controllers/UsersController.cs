@@ -21,11 +21,13 @@ namespace RomeoConnection.Controllers
         {
             var users = GetUsers();
 
+
             if (!String.IsNullOrWhiteSpace(query))
             {
+                query = query.ToLower();
                 users = users
-                    .Where(u => u.FirstName.Contains(query) ||
-                                u.LastName.Contains(query));
+                    .Where(u => u.FirstName.ToLower().Contains(query) ||
+                                u.LastName.ToLower().Contains(query));
 
                 // u.Location.Contains(query) 
                 // u.JobTitle.Contains(query));
@@ -105,6 +107,7 @@ namespace RomeoConnection.Controllers
                 temporaryUser.DisplayId = user.Id;
                 temporaryUser.ProfilePicture = user.ProfilePicture;
                 temporaryUser.IsPrivateProfile = user.IsPrivateProfile;
+                temporaryUser.UserRole = user.UserRole;
 
 
                 listOfUsers.Add(temporaryUser);

@@ -41,6 +41,8 @@ namespace RomeoConnection.ViewModels
         [NotMapped]
         public HttpPostedFileBase UserProfilePicture { get; set; }
 
+        public string UserRole { get; set; }
+
 
 
     }

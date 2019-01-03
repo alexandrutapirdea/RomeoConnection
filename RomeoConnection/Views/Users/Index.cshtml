@@ -9,7 +9,7 @@
     <h2>Search for your friends</h2>
     <div class="form-group">
         <div class="input-group" id="search-users">
-            @Html.TextBoxFor(u => u.SearchTerm, new { @class = "form-control" , placeholder="Search by First Name or Last Name"})
+            @Html.TextBoxFor(u => u.SearchTerm, new { @class = "form-control", placeholder = "Search by First Name or Last Name" })
             <span class="input-group-addon">
                 <i class="glyphicon glyphicon-search"></i>
             </span>
@@ -17,79 +17,88 @@
     </div>
 }
 
-<h2>List of users</h2>
 
-<table class="table table-bordered table-hover">
-    <thead>
-    <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Picture</th>
-        <th>Location</th>
-        <th>Job Title</th>
-        <th>BirthDay</th>
-        <th>Description</th>
-        <th>IsPrivate</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var user in Model.Users)
-    {
-        var base64 = "";
-        if (user.ProfilePicture != null && user.ProfilePicture.Length > 0)
-        {
-            var aux = user.ProfilePicture;
-            base64 = Convert.ToBase64String(aux);
-        }
-
-        <tr>
-            <td>@user.FirstName</td>
-            <td>@user.LastName</td>
-            <td><img alt="" src='@(string.Format("data:image/jpeg;base64,{0}", base64))'
-                     width="200px", height="auto"/></td>
-            <td>@user.Location</td>
-            <td>@user.JobTitle</td>
-            <td>@user.Birthday</td>
-            <td>@user.Description</td>
-            <td>@user.IsPrivateProfile</td>
-            <td>
-                @{
-                    if (Model.ShowActions)
-                    {
-                        <button data-user-id="@user.DisplayId" class="btn btn-primary js-toggle-follow">Add Friend</button>
-                        <p class="number">Aveti 8 prieteni comuni</p>
-                        <button class="btn btn-primary"><a href="@Url.Action("ViewProfile", "Users", new { id = user.DisplayId })">View profile</a></button>
-
-                    }
-                    else
-                    {
-                        <span>You must register before sending friend requests</span>
-                    }
+@if (!Model.Users.Any())
+{
+    <p>Nu a fost gasit niciun utilizator conform criteriilor selectate</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Picture</th>
+                <th>Location</th>
+                <th>Job Title</th>
+                <th>BirthDay</th>
+                <th>Description</th>
+                <th>IsPrivate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.Users)
+            {
+                var base64 = "";
+                if (user.ProfilePicture != null && user.ProfilePicture.Length > 0)
+                {
+                    var aux = user.ProfilePicture;
+                    base64 = Convert.ToBase64String(aux);
                 }
 
-            </td>
-        </tr>
+                <tr>
+                    <td>@user.FirstName</td>
+                    <td>@user.LastName</td>
+                    <td>
+                        <img alt="" src='@(string.Format("data:image/jpeg;base64,{0}", base64))'
+                             width="200px" , height="auto" />
+                    </td>
+                    <td>@user.Location</td>
+                    <td>@user.JobTitle</td>
+                    <td>@user.Birthday</td>
+                    <td>@user.Description</td>
+                    <td>@user.IsPrivateProfile</td>
+                    <td>
+                        @{
+                            if (Model.ShowActions)
+                            {
+                                <button data-user-id="@user.DisplayId" class="btn btn-primary js-toggle-follow">Add Friend</button>
+                                <p class="number">Aveti 8 prieteni comuni</p>
+
+                            }
+                            else
+                            {
+                                <span>You must register before sending friend requests</span>
+                            }
+                            <button class="btn btn-primary"><a href="@Url.Action("ViewProfile", "Users", new { id = user.DisplayId })">View profile</a></button>
                         }
-    </tbody>
-</table>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
 
 @section scripts{
     <script>
 
-        $(document).ready(function() {
+        $(document).ready(function () {
 
-            $(".js-toggle-follow").click(function(e) {
+            $(".js-toggle-follow").click(function (e) {
                 var button = $(e.target);
-                $.post("api/Followings", { FolloweeId : button.attr("data-user-id") })
+                $.post("api/Followings", { FolloweeId: button.attr("data-user-id") })
 
-                    .done(function() {
+                    .done(function () {
                         button
                             .removeClass("btn-primary")
                             .addClass("btn-member")
                             .text("Request sent");
                     })
-                    .fail(function() {
+                    .fail(function () {
                         alert("Oops! Something failed! Try again");
                     });
             });

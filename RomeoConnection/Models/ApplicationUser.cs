@@ -45,6 +45,8 @@ namespace RomeoConnection.Models
 
         public Boolean IsPrivateProfile { get; set; }
 
+        public string UserRole { get; set; }
+
         [NotMapped]
         public HttpPostedFileBase UserProfilePicture { get; set; }
 

@@ -165,7 +165,8 @@ namespace RomeoConnection.Controllers
                     BirthDay = model.Birthday,
                     Description = model.Description,
                     ProfilePicture = data,
-                    IsPrivateProfile = model.IsPrivateProfile
+                    IsPrivateProfile = model.IsPrivateProfile,
+                    UserRole = "RegularUser",
 
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
