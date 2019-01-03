@@ -272,6 +272,10 @@
     <Compile Include="Migrations\201901031426005_Added fields for roles.Designer.cs">
       <DependentUpon>201901031426005_Added fields for roles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901031933287_Added PostComment.cs" />
+    <Compile Include="Migrations\201901031933287_Added PostComment.Designer.cs">
+      <DependentUpon>201901031933287_Added PostComment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -280,6 +284,7 @@
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\GroupMember.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PostComment.cs" />
     <Compile Include="Models\UserPost.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -414,6 +419,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901031426005_Added fields for roles.resx">
       <DependentUpon>201901031426005_Added fields for roles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901031933287_Added PostComment.resx">
+      <DependentUpon>201901031933287_Added PostComment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
