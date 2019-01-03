@@ -19,7 +19,11 @@ namespace RomeoConnection
         {
             ApplicationDbContext context = new ApplicationDbContext();
 
-            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            var roleManager = new RoleManager<IdentityRole>(new
+                RoleStore<IdentityRole>(context));
+            var UserManager = new UserManager<ApplicationUser>(new
+                UserStore<ApplicationUser>(context));
+
             if (!roleManager.RoleExists("RegularUser"))
             {
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
@@ -31,9 +35,21 @@ namespace RomeoConnection
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
                 role.Name = "Admin";
                 roleManager.Create(role);
+
+                var user = new ApplicationUser();
+                user.FirstName = "Thor";
+                user.LastName = "Thor";
+                user.UserRole = "Admin";
+                user.Email = "thor@thor.com";
+                user.UserName = "thor@thor.com";
+                var adminCreated = UserManager.Create(user, "!Parola20192019");
+                if (adminCreated.Succeeded)
+                {
+                    UserManager.AddToRole(user.Id, "Admin");
+                }
             }
+
         }
     }
-
-
 }
+

@@ -52,7 +52,7 @@ namespace RomeoConnection.Controllers
             return View(viewModel);
         }
 
-        [Authorize(Roles = "RegularUser")]
+        [Authorize(Roles = "Admin,RegularUser")]
         public ActionResult CreateGroup()
         {
 
