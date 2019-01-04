@@ -15,6 +15,11 @@ namespace RomeoConnection.Models
         [Required]
         public string CommentById { get; set; }
 
+        public UserPost UserPost { get; set; }
+
+        public int UserPostId { get; set; }
+
+
 
     }
 }

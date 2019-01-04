@@ -213,6 +213,7 @@
     <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PostCommentsController.cs" />
     <Compile Include="Controllers\UserPostController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Dtos\FollowingDto.cs" />
@@ -276,6 +277,10 @@
     <Compile Include="Migrations\201901031933287_Added PostComment.Designer.cs">
       <DependentUpon>201901031933287_Added PostComment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901032208291_Added PostComment2.cs" />
+    <Compile Include="Migrations\201901032208291_Added PostComment2.Designer.cs">
+      <DependentUpon>201901032208291_Added PostComment2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -290,6 +295,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\GroupViewModel.cs" />
     <Compile Include="ViewModels\User.cs" />
+    <Compile Include="ViewModels\UserPostsAndCommentsViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -362,6 +368,7 @@
     <Content Include="Views\Account\Edit.cshtml" />
     <Content Include="Views\Users\ViewProfile.cshtml" />
     <Content Include="Views\UserPost\CreatePost.cshtml" />
+    <Content Include="Views\PostComments\_AddComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -422,6 +429,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901031933287_Added PostComment.resx">
       <DependentUpon>201901031933287_Added PostComment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901032208291_Added PostComment2.resx">
+      <DependentUpon>201901032208291_Added PostComment2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

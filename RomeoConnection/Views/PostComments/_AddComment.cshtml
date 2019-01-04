@@ -1,0 +1,17 @@
+﻿@model RomeoConnection.Models.PostComment
+
+
+
+    @using (Html.BeginForm("CreatePostComment", "PostComments", FormMethod.Post,
+        new {@class = "form-horizontal",}))
+    {
+        <div class="form-group" id="add-comment">
+            <div class="col-md-10">
+                @Html.TextAreaFor(comment => comment.CommentText, new { style = "width: 50%; max-width: none !important;", placeholder = "Say something" })
+                @Html.ValidationMessage("CustomMessage")
+                <button class="btn btn-primary">Post</button>
+            </div>
+        </div>
+        @Html.HiddenFor(model => model.UserPostId, new { Value= Convert.ToInt32(@ViewData["UserPostId"]) })
+        <p>@ViewData["UserPostId"]</p>
+    }

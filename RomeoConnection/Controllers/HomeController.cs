@@ -1,4 +1,5 @@
 ﻿using RomeoConnection.Models;
+using RomeoConnection.ViewModels;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -14,8 +15,15 @@ namespace RomeoConnection.Controllers
         }
         public ActionResult Index()
         {
-            var groups = GetPosts();
-            return View(groups);
+            var posts = GetPosts();
+
+            var viewModel = new UserPostsAndCommentsViewModel
+            {
+                UserPost = posts,
+                PostComment = new PostComment { }
+            };
+
+            return View(viewModel);
         }
 
         public ActionResult About()
