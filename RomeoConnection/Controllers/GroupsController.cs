@@ -114,9 +114,22 @@ namespace RomeoConnection.Controllers
         public ActionResult GroupDetails(int id)
         {
             var group = _context.GroupList.Where(g => g.Id == id).First();
+            var userId = User.Identity.GetUserId();
+            var myGroups = _context.GroupMembers
+                .Where(m => m.GroupMemberUserId == userId)
+                .Select(g => g.Group)
+                .ToList();
 
-            if (group != null)
-                return View(group);
+            var groupPosts = _context.GroupPosts.Where(g => g.GroupId == id).ToList();
+
+            var groupDetailsViewModel = new GroupDetailsViewModel()
+            {
+                Group = group,
+                GroupPosts = groupPosts,
+            };
+
+            if (group != null && myGroups.Contains(group))
+                return View(groupDetailsViewModel);
 
             return RedirectToAction("Index", "Groups");
         }

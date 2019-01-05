@@ -282,6 +282,10 @@
     <Compile Include="Migrations\201901032208291_Added PostComment2.Designer.cs">
       <DependentUpon>201901032208291_Added PostComment2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901050110234_Added group posts.cs" />
+    <Compile Include="Migrations\201901050110234_Added group posts.Designer.cs">
+      <DependentUpon>201901050110234_Added group posts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -295,6 +299,7 @@
     <Compile Include="Models\UserPost.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\GroupDetailsViewModel.cs" />
     <Compile Include="ViewModels\GroupViewModel.cs" />
     <Compile Include="ViewModels\User.cs" />
     <Compile Include="ViewModels\UserPostsAndCommentsViewModel.cs" />
@@ -436,6 +441,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901032208291_Added PostComment2.resx">
       <DependentUpon>201901032208291_Added PostComment2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901050110234_Added group posts.resx">
+      <DependentUpon>201901050110234_Added group posts.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

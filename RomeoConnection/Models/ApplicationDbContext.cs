@@ -15,6 +15,7 @@ namespace RomeoConnection.Models
         public DbSet<GroupMember> GroupMembers { get; set; }
         public DbSet<Following> Followings { get; set; }
         public DbSet<PostComment> PostComments { get; set; }
+        public DbSet<GroupPost> GroupPosts { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -44,6 +45,11 @@ namespace RomeoConnection.Models
 
             modelBuilder.Entity<PostComment>()
                 .HasRequired<UserPost>(u => u.UserPost)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<GroupPost>()
+                .HasRequired<Group>(g => g.Group)
                 .WithMany()
                 .WillCascadeOnDelete(false);
 

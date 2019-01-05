@@ -149,11 +149,20 @@ namespace RomeoConnection.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+
             if (ModelState.IsValid)
             {
+                byte[] data = null;
+                try
+                {
+                    data = new byte[model.UserProfilePicture.ContentLength];
+                    model.UserProfilePicture.InputStream.Read(data, 0, model.UserProfilePicture.ContentLength);
+                }
+                catch (Exception exception)
+                {
+                    Debug.WriteLine("Problema este : {0} ", exception.Message);
+                }
 
-                byte[] data = new byte[model.UserProfilePicture.ContentLength];
-                model.UserProfilePicture.InputStream.Read(data, 0, model.UserProfilePicture.ContentLength);
                 var user = new ApplicationUser
                 {
                     UserName = model.Email,

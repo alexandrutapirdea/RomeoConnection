@@ -1,9 +1,42 @@
-﻿@model RomeoConnection.Models.Group
+﻿@model RomeoConnection.ViewModels.GroupDetailsViewModel
 @{
     ViewBag.Title = "MyGroups";
 }
 
-<h2>My Groups : </h2>
+<h2>@Model.Group.Title</h2>
+
+<h2>Say something...</h2>
+@using (Html.BeginForm("CreateGroupPost", "GroupPosts", FormMethod.Post, 
+    new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(g => g.GroupPost.Title)
+        @Html.TextBoxFor(g => g.GroupPost.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(g => g.GroupPost.Title)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(g => g.GroupPost.Description)
+        @Html.TextBoxFor(g => g.GroupPost.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(g => g.GroupPost.Description)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(g => g.GroupPost.PostPicture, "Add a picture ", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(g => g.GroupPost.GroupPostPicture, new { type = "file" })
+            @Html.ValidationMessage("CustomMessage")
+        </div>
+        @Html.HiddenFor(g => g.Group.Id, new { Value= Model.Group.Id })
+    </div>
+    <br/>
+    <div class="form-group">
+        @* <input type="submit" class="btn btn-primary" value="Post" />      new { id = Model.Group.Id })*@
+        <button type="submit" class="btn btn-primary">Add a post</button>
+    </div>
+
+
+}
+
 
 <table class="table table-bordered table-hover">
     <thead>
@@ -13,11 +46,24 @@
     </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>@Model.Title</td>
-            <td>@Model.Description</td>
-        </tr>
+    <tr>
+        <td>@Model.Group.Title</td>
+        <td>@Model.Group.Description</td>
+        <p>@Model.Group.Id</p>
+    </tr>
     </tbody>
 </table>
+
+@{
+    foreach (var groupPost in Model.GroupPosts)
+    {
+        <div>
+            <p>Author : @groupPost.ApplicationUser.FirstName  @groupPost.ApplicationUser.LastName</p>
+            <p style="font-weight: bold; font-size: 18px;">@groupPost.Title</p>
+            <p>Message : @groupPost.Description</p>
+        </div>
+    }
+}
+
 
 
