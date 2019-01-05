@@ -1,4 +1,6 @@
-﻿@model RomeoConnection.ViewModels.GroupViewModel
+﻿@using System.Web.Mvc.Html
+@using System.Web.UI.WebControls
+@model RomeoConnection.ViewModels.GroupViewModel
 @{
     ViewBag.Title = "Index";
 }
@@ -24,12 +26,12 @@
                     {
                         <button data-group-id="@group.Id" class="btn btn-primary js-toggle-membership">Join</button>
                         <p class="number">33 de utilizatori s-au inscris deja</p>
-
-                    }
+                        <button class="btn btn-primary"><a href="@Url.Action("GroupDetails", "Groups", new { id = group.Id })">View group</a></button>
+                            }
                     else
                     {
                         <span>You must register before joining a group</span>
-                    }
+                        }
                 }
 
             </div>

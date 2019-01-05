@@ -109,5 +109,16 @@ namespace RomeoConnection.Controllers
 
             return _context.GroupList;
         }
+
+
+        public ActionResult GroupDetails(int id)
+        {
+            var group = _context.GroupList.Where(g => g.Id == id).First();
+
+            if (group != null)
+                return View(group);
+
+            return RedirectToAction("Index", "Groups");
+        }
     }
 }

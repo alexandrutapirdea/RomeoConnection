@@ -28,7 +28,7 @@
                     <p>@post.Title</p>
                     <p>@post.Description</p>
                     <img alt="" src='@(string.Format("data:image/jpeg;base64,{0}", base64))'
-                         width="200px", height="auto" alt="nu se incarca"/>
+                         width="200px" , height="auto" alt="nu se incarca" />
                     <div id="comments" style="background-color: rgb(159, 48, 67); text-align: center">
                         @foreach (var comment in post.Comments)
                         {
@@ -39,14 +39,14 @@
                                 </div>
                             </div>
                         }
-                        @Html.Partial("../PostComments/_AddComment", Model.PostComment, viewData: new ViewDataDictionary { { "UserPostId", @post.Id } });
+                        @Html.Partial("../PostComments/_AddComment", Model.PostComment, viewData: new ViewDataDictionary { { "UserPostId", @post.Id } })
                     </div>
                 </div>
 
             }
         }
 
-    else
+        else
         {
             <p>Nu exista nicio postare</p>
         }
@@ -54,5 +54,6 @@
     else
     {
         <h3>Connect with next boyfriend and let's have fun on RomeConnect. </h3>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/anD9ZrMJT8k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     }
 }

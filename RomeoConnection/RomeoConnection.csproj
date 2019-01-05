@@ -210,6 +210,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FollowingsController.cs" />
     <Compile Include="Controllers\GroupMembersController.cs" />
+    <Compile Include="Controllers\GroupPostsController.cs" />
     <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -288,6 +289,7 @@
     <Compile Include="Models\Following.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\GroupMember.cs" />
+    <Compile Include="Models\GroupPost.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PostComment.cs" />
     <Compile Include="Models\UserPost.cs" />
@@ -369,10 +371,12 @@
     <Content Include="Views\Users\ViewProfile.cshtml" />
     <Content Include="Views\UserPost\CreatePost.cshtml" />
     <Content Include="Views\PostComments\_AddComment.cshtml" />
+    <Content Include="Views\Groups\GroupDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Image\" />
+    <Folder Include="Views\GroupPosts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
