@@ -7,5 +7,6 @@ namespace RomeoConnection.ViewModels
     {
         public IEnumerable<UserPost> UserPost { get; set; }
         public PostComment PostComment { get; set; }
+        public bool ShowActions { get; set; }
     }
 }

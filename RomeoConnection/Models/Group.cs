@@ -26,5 +26,7 @@ namespace RomeoConnection.Models
         public ApplicationUser CreatedBy { get; set; }
 
         //DE INLOCUIT APPLICATIONUSER CU USER
+
+        public int NrUsers { get; set; }
     }
 }

@@ -23,25 +23,32 @@
                     var aux = post.PostPicture;
                     base64 = Convert.ToBase64String(aux);
                 }
-                <div style="background: #2D283E; margin: 3%">
-                    <p>Author : @post.ApplicationUser.FirstName</p>
-                    <p>@post.Title</p>
-                    <p>@post.Description</p>
-                    <img alt="" src='@(string.Format("data:image/jpeg;base64,{0}", base64))'
-                         width="200px" , height="auto" alt="nu se incarca" />
+        <div id="post" style="background: #2D283E; margin: 3%">
+            <p>Author : @post.ApplicationUser.FirstName</p>
+            <p>@post.Title</p>
+            <p>@post.Description</p>
+            <img alt="" src='@(string.Format("data:image/jpeg;base64,{0}", base64))'
+                 width="200px" , height="auto" alt="nu se incarca" />
+            <div id="comments" style="background-color: rgb(159, 48, 67); text-align: center">
+                @foreach (var comment in post.Comments)
+                {
                     <div id="comments" style="background-color: rgb(159, 48, 67); text-align: center">
-                        @foreach (var comment in post.Comments)
-                        {
-                            <div id="comments" style="background-color: rgb(159, 48, 67); text-align: center">
-                                <div id="comment" style="border: 2px solid red;">
-                                    <h4>Autor : @comment.CommentBy.FirstName  @comment.CommentBy.LastName</h4>
-                                    <p>@comment.CommentText</p>
-                                </div>
-                            </div>
-                        }
-                        @Html.Partial("../PostComments/_AddComment", Model.PostComment, viewData: new ViewDataDictionary { { "UserPostId", @post.Id } })
+                        <div id="comment" style="border: 2px solid red;">
+                            <h4>Autor : @comment.CommentBy.FirstName  @comment.CommentBy.LastName</h4>
+                            <p>@comment.CommentText</p>
+                        </div>
                     </div>
-                </div>
+                }
+                @Html.Partial("../PostComments/_AddComment", Model.PostComment, viewData: new ViewDataDictionary { { "UserPostId", @post.Id } })
+            </div>
+            @{
+                if (Model.ShowActions)
+                {
+                    <button class="btn btn-primary js-delete-post" data-post-id="@post.Id">Delete</button>
+                }
+            }
+
+        </div>
 
             }
         }
@@ -56,4 +63,32 @@
         <h3>Connect with next boyfriend and let's have fun on RomeConnect. </h3>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/anD9ZrMJT8k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     }
+}
+
+
+@section scripts{
+    <script>
+
+        $(document).ready(function() {
+
+            $(".js-delete-post").click(function(e) {
+                var button = $(e.target);
+
+                if (confirm("Are you sure you want to delete this post?")) {
+                    $.ajax({
+                        url: "../../api/posts/" + button.attr("data-post-id"),
+                            method: "DELETE"
+                        })
+                        .done(function() {
+                            $("#post").fadeOut(function() {
+                                $(this).remove();
+                            });
+                        })
+                        .fail(function() {
+                            alert("Something went wrong!")
+                        })
+                }
+            });
+        });
+    </script>
 }

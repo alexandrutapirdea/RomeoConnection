@@ -48,6 +48,9 @@
     <Reference Include="Kentor.OwinCookieSaver, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Kentor.OwinCookieSaver.1.1.1\lib\net452\Kentor.OwinCookieSaver.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -196,9 +199,6 @@
     <Reference Include="Microsoft.AI.Web">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.5.1\lib\net45\Microsoft.AI.Web.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -208,6 +208,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\API\PostsController.cs" />
     <Compile Include="Controllers\FollowingsController.cs" />
     <Compile Include="Controllers\GroupMembersController.cs" />
     <Compile Include="Controllers\GroupPostsController.cs" />
@@ -215,6 +216,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PostCommentsController.cs" />
+    <Compile Include="Controllers\Test2Controller.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UserPostController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Dtos\FollowingDto.cs" />
@@ -285,6 +288,14 @@
     <Compile Include="Migrations\201901050110234_Added group posts.cs" />
     <Compile Include="Migrations\201901050110234_Added group posts.Designer.cs">
       <DependentUpon>201901050110234_Added group posts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901061628122_Added NrUser sCollumn.cs" />
+    <Compile Include="Migrations\201901061628122_Added NrUser sCollumn.Designer.cs">
+      <DependentUpon>201901061628122_Added NrUser sCollumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901062048007_AddIsDeletedToPost.cs" />
+    <Compile Include="Migrations\201901062048007_AddIsDeletedToPost.Designer.cs">
+      <DependentUpon>201901062048007_AddIsDeletedToPost.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -382,6 +393,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Image\" />
     <Folder Include="Views\GroupPosts\" />
+    <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -444,6 +456,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901050110234_Added group posts.resx">
       <DependentUpon>201901050110234_Added group posts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901061628122_Added NrUser sCollumn.resx">
+      <DependentUpon>201901061628122_Added NrUser sCollumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901062048007_AddIsDeletedToPost.resx">
+      <DependentUpon>201901062048007_AddIsDeletedToPost.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

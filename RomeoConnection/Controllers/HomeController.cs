@@ -1,6 +1,7 @@
 ﻿using RomeoConnection.Models;
 using RomeoConnection.ViewModels;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace RomeoConnection.Controllers
@@ -16,11 +17,13 @@ namespace RomeoConnection.Controllers
         public ActionResult Index()
         {
             var posts = GetPosts();
+            var showActions = User.IsInRole("Admin");
 
             var viewModel = new UserPostsAndCommentsViewModel
             {
                 UserPost = posts,
-                PostComment = new PostComment { }
+                PostComment = new PostComment { },
+                ShowActions = showActions       
             };
 
             return View(viewModel);
@@ -43,7 +46,7 @@ namespace RomeoConnection.Controllers
         private IEnumerable<UserPost> GetPosts()
         {
 
-            return _context.UserPostsList;
+            return _context.UserPostsList.Where(p => !p.IsDeleted);
 
         }
 

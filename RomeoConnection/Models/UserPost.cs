@@ -25,6 +25,8 @@ namespace RomeoConnection.Models
 
         public byte[] PostPicture { get; set; }
 
+        public bool IsDeleted { get; set; }
+
         [NotMapped]
         public HttpPostedFileBase UserPostPicture { get; set; }
 
