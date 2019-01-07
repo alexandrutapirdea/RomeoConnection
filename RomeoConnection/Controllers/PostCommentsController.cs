@@ -35,6 +35,7 @@ namespace RomeoConnection.Controllers
                 CommentBy = currentUser,
                 CommentById = userId,
                 UserPostId = createdComment.UserPostId,
+                CommentStatus = "pending"
             };
             try
             {

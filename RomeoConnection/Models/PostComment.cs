@@ -19,6 +19,8 @@ namespace RomeoConnection.Models
 
         public int UserPostId { get; set; }
 
+        public string CommentStatus { get; set; }
+
 
 
     }

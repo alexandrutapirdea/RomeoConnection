@@ -32,12 +32,15 @@
                     <div id="comments" style="background-color: rgb(159, 48, 67); text-align: center">
                         @foreach (var comment in post.Comments)
                         {
-                            <div id="comments" style="background-color: rgb(159, 48, 67); text-align: center">
-                                <div id="comment" style="border: 2px solid red;">
-                                    <h4>Autor : @comment.CommentBy.FirstName  @comment.CommentBy.LastName</h4>
-                                    <p>@comment.CommentText</p>
+                            if (comment.CommentStatus == "approved")
+                            {
+                                <div id="comments" style="background-color: rgb(159, 48, 67); text-align: center">
+                                    <div id="comment" style="border: 2px solid red;">
+                                        <h4>Autor : @comment.CommentBy.FirstName  @comment.CommentBy.LastName</h4>
+                                        <p>@comment.CommentText</p>
+                                    </div>
                                 </div>
-                            </div>
+                            }
                         }
                         @Html.Partial("../PostComments/_AddComment", Model.PostComment, viewData: new ViewDataDictionary { { "UserPostId", @post.Id } })
                     </div>

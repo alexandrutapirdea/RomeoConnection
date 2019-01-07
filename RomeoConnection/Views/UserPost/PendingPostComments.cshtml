@@ -1,0 +1,96 @@
+﻿@using Newtonsoft.Json.Linq
+@model List<RomeoConnection.Models.UserPost>
+    
+<h2>Pending Comments for my posts</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>CommentText</th>
+        <th>CommentBy</th>
+        <th>Picture</th>
+        <th>Comments</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    @if(Model != null)
+    {
+        foreach (var post in Model)
+        {
+            var base64 = "";
+            if (post.PostPicture != null && post.PostPicture.Length > 0)
+            {
+                var aux = post.PostPicture;
+                base64 = Convert.ToBase64String(aux);
+            }
+            <tr>
+                <td>@post.Title</td>
+
+                <td>@post.Description</td>
+                <td>
+                    <img alt="" src='@(string.Format("data:image/jpeg;base64,{0}", base64))'
+                         width="200px" , height="auto"/>
+                </td>
+                <td>
+                    @{
+
+                        foreach (var comment in post.Comments)
+                         {
+                             if (comment.CommentStatus == "pending")
+                             {
+                                 <div style="margin: 20px; background-color: red;">
+                                     <p>@comment.CommentBy.FirstName @comment.CommentBy.LastName </p>
+                                     <p>@comment.CommentText</p>
+                                     <button data-post-comment="@comment.Id" class="btn btn-primary js-comment-approve">Approve</button>
+                                     @* <button class="btn btn-primary">Decline @Html.Action("DeclinePostComment", "UserPost", new {comment})</button> *@
+                                 </div>
+                             }
+                         }
+                    }
+                </td>
+                @*             <td> *@
+                @*                 @{ *@
+                @*                     if (Model.ShowActions) *@
+                @*                     { *@
+                @*                         <button data-user-id="@user.DisplayId" class="btn btn-primary js-toggle-follow">Add Friend</button> *@
+                @*                         <p class="number">Aveti 8 prieteni comuni</p> *@
+                @* *@
+                @*                     } *@
+                @*                     else *@
+                @*                     { *@
+                @*                         <span>You must register before sending friend requests</span> *@
+                @*                     } *@
+                @* } *@
+
+                @* </td> *@
+
+            </tr>
+        }
+    }
+    </tbody>
+</table>
+
+@section scripts{
+    <script>
+
+        $(document).ready(function() {
+
+            $(".js-comment-approve").click(function(e) {
+                var button = $(e.target);
+                $.post("../api/PendingPostComments", { postComment: button.attr("data-post-comment") })
+
+                    .done(function() {
+                        button
+                            .removeClass("btn-primary")
+                            .addClass("btn-member")
+                            .text("Already APPROVED");
+                    })
+                    .fail(function() {
+                        alert("Oops! Something failed! Try again");
+                    });
+            });
+        });
+    </script>
+}

@@ -214,11 +214,13 @@
     <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PendingPostCommentsController.cs" />
     <Compile Include="Controllers\PostCommentsController.cs" />
     <Compile Include="Controllers\UserPostController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Dtos\FollowingDto.cs" />
     <Compile Include="Dtos\GroupMembersDto.cs" />
+    <Compile Include="Dtos\PendingPostComment.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -285,6 +287,10 @@
     <Compile Include="Migrations\201901050110234_Added group posts.cs" />
     <Compile Include="Migrations\201901050110234_Added group posts.Designer.cs">
       <DependentUpon>201901050110234_Added group posts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901061300492_Status for comments.cs" />
+    <Compile Include="Migrations\201901061300492_Status for comments.Designer.cs">
+      <DependentUpon>201901061300492_Status for comments.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -377,6 +383,7 @@
     <Content Include="Views\UserPost\CreatePost.cshtml" />
     <Content Include="Views\PostComments\_AddComment.cshtml" />
     <Content Include="Views\Groups\GroupDetails.cshtml" />
+    <Content Include="Views\UserPost\PendingPostComments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -444,6 +451,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901050110234_Added group posts.resx">
       <DependentUpon>201901050110234_Added group posts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901061300492_Status for comments.resx">
+      <DependentUpon>201901061300492_Status for comments.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -81,5 +81,35 @@ namespace RomeoConnection.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        [Authorize]
+        public ActionResult PendingPostComments()
+        {
+            var userId = User.Identity.GetUserId();
+            //            var currentUser = _context.Users.Single(u => u.Id == userId);
+            var myPosts = _context.UserPostsList.Where(p => p.ApplicationUserId == userId && p.Comments.Any()).ToList();
+            //            var myPendingPosts = myPosts.Where(p => p.Comments.Where(c => c.CommentStatus == "pending"));
+            return View("PendingPostComments", myPosts);
+        }
+
+        public ActionResult ApprovePostComment(PostComment model)
+        {
+            var userId = User.Identity.GetUserId();
+            model.CommentStatus = "approved";
+            _context.SaveChanges();
+
+            return new EmptyResult();
+
+        }
+
+        public ActionResult DeclinePostComment(PostComment model)
+        {
+            var userId = User.Identity.GetUserId();
+            model.CommentStatus = "declined";
+            _context.SaveChanges();
+
+            return new EmptyResult();
+        }
+
     }
 }
